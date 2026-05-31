@@ -1,0 +1,33 @@
+name: Course content issue
+description: Report unclear lessons, typos, missing screenshots, or broken diagrams.
+title: "Content: "
+labels:
+  - content
+body:
+  - type: input
+    id: lesson
+    attributes:
+      label: Lesson or file
+      placeholder: frontend-book/docs/chapter-02-html/2-1-foundations.md
+    validations:
+      required: true
+  - type: textarea
+    id: issue
+    attributes:
+      label: What should be improved?
+      placeholder: This explanation may be confusing for complete beginners.
+    validations:
+      required: true
+  - type: textarea
+    id: suggestion
+    attributes:
+      label: Suggested fix
+      placeholder: Explain the term with a smaller example first.
+  - type: dropdown
+    id: language
+    attributes:
+      label: Language
+      options:
+        - English
+        - Roman Urdu
+        - Both

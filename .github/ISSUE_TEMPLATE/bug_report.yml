@@ -1,0 +1,39 @@
+name: Bug report
+description: Report something broken in the site or course pages.
+title: "Bug: "
+labels:
+  - bug
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: What happened?
+      description: Describe the bug clearly.
+      placeholder: The page opens, but the course card does not navigate.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What did you expect?
+      placeholder: I expected the front-end course to open.
+    validations:
+      required: true
+  - type: input
+    id: page
+    attributes:
+      label: Page or route
+      placeholder: /frontend/
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. Open the home page.
+        2. Click the Front-End card.
+        3. See the issue.
+  - type: input
+    id: browser
+    attributes:
+      label: Browser and device
+      placeholder: Chrome on Android, Safari on iPhone, Edge on Windows
