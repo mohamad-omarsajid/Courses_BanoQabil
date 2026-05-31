@@ -1,0 +1,142 @@
+/* ==========================================================================
+   Interactive exercises: a small Duolingo-style practice layer.
+   Authored as a fenced ```quiz block (rendered to <div class="bq-quiz-src">),
+   turned into an interactive card by javascripts/quiz.js. State lives in
+   localStorage, no backend. No faces or characters, per the project rule.
+   ========================================================================== */
+
+[data-md-color-scheme="default"] {
+  --bq-correct: #0a7d54;
+  --bq-correct-bg: #e7f6ef;
+  --bq-wrong: #b3261e;
+  --bq-wrong-bg: #fbeceb;
+}
+[data-md-color-scheme="slate"] {
+  --bq-correct: #46d39e;
+  --bq-correct-bg: rgba(70, 211, 158, 0.12);
+  --bq-wrong: #ff6b6b;
+  --bq-wrong-bg: rgba(255, 107, 107, 0.12);
+}
+
+/* hide the raw source until JS swaps in the interactive card */
+.bq-quiz-src { display: none; }
+
+.md-typeset .bq-exercise {
+  border: 1px solid var(--bq-line);
+  border-radius: 14px;
+  padding: 0.2rem 1.1rem 0.95rem;
+  margin: 1.6rem 0;
+}
+.bq-exercise__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.6rem;
+  border-bottom: 1px solid var(--bq-line);
+  padding: 0.6rem 0 0.5rem;
+  margin-bottom: 0.4rem;
+}
+.bq-exercise__title {
+  font-weight: 700;
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.bq-exercise__stats { display: flex; gap: 0.45rem; }
+.bq-stat {
+  background: var(--bq-hover-bg);
+  border: 1px solid var(--bq-line);
+  border-radius: 999px;
+  padding: 0.12rem 0.55rem;
+  font-size: 0.63rem;
+  white-space: nowrap;
+}
+
+.bq-q { margin: 0.85rem 0 0; }
+.bq-q__prompt { font-weight: 600; margin: 0 0 0.5rem; line-height: 1.6; }
+.bq-q__options { display: flex; flex-direction: column; gap: 0.4rem; }
+
+/* Inline code in exercises reads at the same size as the surrounding text.
+   Many options are entirely code, so Material's shrunken inline-code size made
+   whole lines look tiny next to the book's prose. */
+.md-typeset .bq-exercise code { font-size: 0.94em; }
+
+.bq-opt {
+  text-align: left;
+  border: 1px solid var(--bq-line);
+  background: transparent;
+  color: inherit;
+  border-radius: 9px;
+  padding: 0.5rem 0.75rem;
+  font: inherit;
+  font-size: 0.72rem;
+  cursor: pointer;
+  transition: background-color 0.12s ease, border-color 0.12s ease;
+}
+.bq-opt:hover { background: var(--bq-hover-bg); }
+.is-answered .bq-opt { cursor: default; }
+.is-answered .bq-opt:hover { background: transparent; }
+.bq-opt.is-correct {
+  border-color: var(--bq-correct);
+  background: var(--bq-correct-bg);
+  color: var(--bq-correct);
+  font-weight: 600;
+}
+.bq-opt.is-wrong {
+  border-color: var(--bq-wrong);
+  background: var(--bq-wrong-bg);
+  color: var(--bq-wrong);
+}
+
+.bq-fill {
+  font: inherit;
+  font-size: 1em;
+  border: none;
+  border-bottom: 2px solid var(--bq-next);
+  background: transparent;
+  color: inherit;
+  padding: 0.05rem 0.35rem;
+  min-width: 6rem;
+  text-align: center;
+}
+.bq-fill:focus { outline: none; }
+.bq-fill.is-correct { border-color: var(--bq-correct); color: var(--bq-correct); font-weight: 600; }
+.bq-fill.is-wrong { border-color: var(--bq-wrong); color: var(--bq-wrong); }
+.bq-check {
+  margin-left: 0.5rem;
+  border: 1px solid var(--bq-next);
+  color: var(--bq-next);
+  background: transparent;
+  border-radius: 999px;
+  padding: 0.22rem 0.85rem;
+  font: inherit;
+  font-size: 0.68rem;
+  cursor: pointer;
+  transition: background-color 0.12s ease, color 0.12s ease;
+}
+.bq-check:hover { background: var(--bq-next); color: #fff; }
+.bq-check:disabled { opacity: 0.5; cursor: default; }
+
+.bq-q__why {
+  display: block;
+  margin-top: 0.55rem;
+  border-radius: 9px;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.7rem;
+  line-height: 1.6;
+}
+.bq-q__why.is-correct { background: var(--bq-correct-bg); }
+.bq-q__why.is-wrong { background: var(--bq-wrong-bg); }
+.bq-q__verdict { font-weight: 700; display: block; margin-bottom: 0.1rem; }
+.bq-q__why.is-correct .bq-q__verdict { color: var(--bq-correct); }
+.bq-q__why.is-wrong .bq-q__verdict { color: var(--bq-wrong); }
+
+.bq-exercise__result {
+  display: none;
+  margin-top: 0.9rem;
+  padding-top: 0.65rem;
+  border-top: 1px solid var(--bq-line);
+  font-weight: 600;
+  font-size: 0.74rem;
+}
+.bq-exercise__result.is-shown { display: block; }

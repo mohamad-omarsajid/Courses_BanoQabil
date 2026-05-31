@@ -1,0 +1,783 @@
+/* ==========================================================================
+   Bano Qabil books: clean, dense, black-and-white skin for MkDocs Material.
+   - small, easy-to-read type
+   - left sidebar flush to the edge; tidy single-line chapter rows
+   - black/white only; the one green accent is the "Next" button
+   - no sidebar icons, no emojis
+   ========================================================================== */
+
+/* Urdu script font (Noto Nastaliq Urdu). Must stay at the very top: a CSS
+   @import is ignored unless it precedes every other rule in the stylesheet. */
+@import url("https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;500;600&display=swap");
+
+:root {
+  --bq-next: #0a8a78;          /* the only green, used on the Next button */
+  --bq-next-deep: #097a6a;
+  --md-text-font: "Inter";
+  /* one spacing scale used throughout, so rhythm stays consistent */
+  --bq-s1: 0.25rem;  /* 4  */
+  --bq-s2: 0.5rem;   /* 8  */
+  --bq-s3: 0.75rem;  /* 12 */
+  --bq-s4: 1rem;     /* 16 */
+  --bq-s5: 1.5rem;   /* 24 */
+  --bq-s6: 2rem;     /* 32 */
+  --bq-s7: 3rem;     /* 48 */
+  --bq-s8: 4rem;     /* 64 */
+}
+
+/* Light: warm off-white paper, soft ink (not pure black on pure white) */
+[data-md-color-scheme="default"] {
+  --md-primary-fg-color: #ffffff;
+  --md-primary-fg-color--light: #ffffff;
+  --md-primary-fg-color--dark: #ffffff;
+  --md-primary-bg-color: #18181b;
+  --md-primary-bg-color--light: #6b6b70;
+  --md-accent-fg-color: #18181b;
+  --md-typeset-a-color: #18181b;
+  --md-default-bg-color: #fbfbf9;       /* warm paper, not stark white */
+  --md-default-fg-color: #26262a;       /* soft ink, not pure black */
+  --md-default-fg-color--light: #565660;
+  --md-default-fg-color--lighter: #8a8a93;
+  --md-default-fg-color--lightest: #f0efeb;
+  --md-typeset-color: #26262a;
+  --md-footer-bg-color: #f5f4f1;
+  --md-footer-bg-color--dark: #efeee9;
+  --bq-active-bg: #e8e6df;
+  --bq-hover-bg: #f1efe9;
+  --bq-line: #e3e0d8;                   /* warm, soft border */
+  --bq-surface: #f1efe7;                /* code blocks / quiet cards */
+  --bq-surface-2: #e8e6df;
+  --bq-assignment-bg: #f1faf8;
+  --bq-scroll-thumb: rgba(0, 0, 0, 0.16);
+  --bq-scroll-thumb-hover: rgba(0, 0, 0, 0.3);
+}
+
+/* Dark: layered surfaces (page < sidebar/code < hover) for depth, soft text */
+[data-md-color-scheme="slate"] {
+  --md-hue: 220;
+  --md-primary-fg-color: #0c0c0d;
+  --md-primary-fg-color--light: #0c0c0d;
+  --md-primary-fg-color--dark: #0c0c0d;
+  --md-primary-bg-color: #f4f4f5;
+  --md-accent-fg-color: #f4f4f5;
+  --md-typeset-a-color: #f4f4f5;
+  --md-default-bg-color: #0c0c0e;       /* deepest layer: the page */
+  --md-default-fg-color: rgba(255, 255, 255, 0.82);
+  --md-default-fg-color--light: rgba(255, 255, 255, 0.6);
+  --md-default-fg-color--lighter: rgba(255, 255, 255, 0.42);
+  --md-footer-bg-color: #0a0a0b;
+  --bq-active-bg: rgba(255, 255, 255, 0.12);
+  --bq-hover-bg: rgba(255, 255, 255, 0.055);
+  --bq-line: rgba(255, 255, 255, 0.13);
+  --bq-surface: #1e1e23;                /* clearly above the #0c0c0e page so code blocks stand out */
+  --bq-surface-2: #27272d;              /* one more step, for hovers/headers */
+  --bq-assignment-bg: rgba(10, 138, 120, 0.08);
+  --bq-scroll-thumb: rgba(255, 255, 255, 0.16);
+  --bq-scroll-thumb-hover: rgba(255, 255, 255, 0.32);
+}
+
+/* --------------------------------------------------------------------------
+   Layout: sidebar flush left, content fills the width
+   -------------------------------------------------------------------------- */
+.md-grid { max-width: none; }
+.md-main__inner { margin: 0; max-width: none; }
+.md-sidebar--primary { left: 0; }
+
+@media screen and (min-width: 76.25em) {
+  .md-sidebar--primary { width: 15rem; }
+  /* the content AREA is generous so diagrams can be large, but the prose itself
+     is held to a narrow reading measure (see the rules below the media query) */
+  .md-content { max-width: 58rem; margin: 0 auto; }
+  /* generous left and right gutters around the reading area */
+  .md-content__inner { margin: 0 var(--bq-s8); }
+  /* the site name already shows in the header, so hide the sidebar copy */
+  .md-nav--primary > .md-nav__title { display: none; }
+}
+
+/* Compact, utility-focused navbar: tighter than Material's default height */
+.md-header__inner { min-height: 2.4rem; }
+.md-header__inner > .md-header__button.md-logo { padding: 0.2rem; margin: 0.1rem; }
+
+/* Sidebar scrollbar: thin, quiet, theme-aware (replaces the chunky OS bar) */
+.md-sidebar__scrollwrap {
+  scrollbar-width: thin;
+  scrollbar-color: var(--bq-scroll-thumb) transparent;
+}
+.md-sidebar__scrollwrap::-webkit-scrollbar { width: 6px; height: 6px; }
+.md-sidebar__scrollwrap::-webkit-scrollbar-track { background: transparent; }
+.md-sidebar__scrollwrap::-webkit-scrollbar-thumb {
+  background-color: var(--bq-scroll-thumb);
+  border-radius: 999px;
+}
+.md-sidebar__scrollwrap::-webkit-scrollbar-thumb:hover {
+  background-color: var(--bq-scroll-thumb-hover);
+}
+
+/* --------------------------------------------------------------------------
+   Header: flat, bordered
+   -------------------------------------------------------------------------- */
+.md-header {
+  box-shadow: none;
+  border-bottom: none;
+  background-color: #0e0e10;
+  color: #ffffff;
+}
+.md-header--shadow { box-shadow: none; }
+.md-header__title { font-weight: 700; font-size: 0.82rem; letter-spacing: -0.01em; color: #ffffff; }
+.md-header__button { color: #ffffff; }
+/* the organisation logo, painted white for the dark header */
+.md-header__button.md-logo img,
+.md-header__button.md-logo svg {
+  filter: brightness(0) invert(1);
+  height: 1.5rem;
+  width: auto;
+}
+/* the Roman Urdu toggle sits on the dark header, so it reads white */
+.md-header .bq-roman-toggle { color: #ffffff; border-color: rgba(255, 255, 255, 0.35); }
+.md-header .bq-roman-toggle:hover { border-color: #ffffff; }
+
+/* --------------------------------------------------------------------------
+   Course-switcher bar, directly under the header (markup in overrides/main.html)
+   -------------------------------------------------------------------------- */
+.bq-course-bar {
+  background-color: #0e0e10;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+.bq-course-bar__inner {
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+  height: 2.1rem;
+  padding: 0 0.9rem;
+}
+.bq-course-bar__label {
+  font-size: 0.56rem;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  color: rgba(255, 255, 255, 0.45);
+  margin-right: 0.7rem;
+}
+.bq-course {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin: 0 0.55rem;
+  padding: 0.5rem 0.1rem;
+  font-size: 0.66rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.66);
+  text-decoration: none;
+  border-bottom: 2px solid transparent;
+}
+.bq-course:hover { color: #ffffff; }
+.bq-course.is-active { color: #ffffff; border-bottom-color: #ffffff; }
+.bq-course.is-soon { color: rgba(255, 255, 255, 0.32); cursor: default; }
+.bq-course.is-soon em {
+  font-style: normal;
+  font-size: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.05rem 0.32rem;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 999px;
+}
+/* quiet link back to the course's main page on the website, pushed to the far
+   right so it stays available without competing for attention */
+.bq-course-bar__home {
+  margin-left: auto;
+  font-size: 0.62rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.5);
+  text-decoration: none;
+  white-space: nowrap;
+}
+.bq-course-bar__home:hover { color: #ffffff; }
+
+/* --------------------------------------------------------------------------
+   Typography: smaller body, much smaller headings
+   -------------------------------------------------------------------------- */
+.md-typeset { font-size: 0.72rem; line-height: 1.8; color: var(--md-default-fg-color); }
+.md-typeset p { margin: 0 0 var(--bq-s4); }
+/* clear heading scale with deliberate section rhythm. h2 sections get a strong
+   top margin and a faint divider so each section reads as its own block. */
+.md-typeset h1 { font-weight: 700; font-size: 1.75rem; line-height: 1.2; letter-spacing: -0.025em; margin-bottom: var(--bq-s4); color: var(--md-default-fg-color); }
+.md-typeset h2 { font-weight: 650; font-size: 1.28rem; line-height: 1.3; letter-spacing: -0.018em; margin-top: var(--bq-s8); margin-bottom: var(--bq-s4); padding-top: var(--bq-s4); border-top: 1px solid var(--bq-line); }
+.md-typeset h3 { font-weight: 600; font-size: 1.05rem; letter-spacing: -0.01em; margin-top: var(--bq-s6); margin-bottom: var(--bq-s2); }
+.md-typeset h4 { font-weight: 600; font-size: 0.88rem; margin-top: var(--bq-s5); }
+/* the first heading on a page should not carry the divider/extra gap */
+.md-typeset h1 + h2 { margin-top: var(--bq-s5); border-top: none; padding-top: 0; }
+.md-typeset a { text-decoration: none; border-bottom: 1px solid color-mix(in oklab, var(--md-typeset-a-color) 28%, transparent); transition: border-color 0.15s ease; }
+.md-typeset a:hover { border-bottom-color: currentColor; }
+
+/* Code: a touch larger everywhere (was too small), flatter and softer than a card */
+.md-typeset code { border-radius: 5px; font-size: 0.86em; }
+.md-typeset pre > code { font-size: 0.78rem; line-height: 1.6; }
+.md-typeset pre > code,
+.md-typeset .highlight {
+  border-radius: 8px;
+}
+.md-typeset .highlight {
+  border: 1px solid var(--bq-line);
+  background-color: var(--bq-surface);
+}
+.md-typeset pre > code { background-color: transparent; }
+.md-typeset table:not([class]) {
+  border-radius: 10px;
+  border: 1px solid var(--bq-line);
+  box-shadow: none;
+  font-size: 0.72rem;
+}
+.md-typeset table:not([class]) th { background: var(--bq-surface); font-weight: 600; }
+
+/* Narrow text, wide media. The prose blocks are capped to a comfortable
+   reading measure and left-aligned (sharing one left edge so lists, headings,
+   and paragraphs line up), while figures, tables, and code use the full (wider)
+   content area so diagrams are large and their labels stay legible. We do NOT
+   centre the prose blocks: Material gives lists a left margin via a [dir=ltr]
+   rule that out-specifies `margin:auto`, which would push bullets out of line. */
+.md-typeset > p,
+.md-typeset > ul,
+.md-typeset > ol,
+.md-typeset > h1,
+.md-typeset > h2,
+.md-typeset > h3,
+.md-typeset > h4,
+.md-typeset > h5,
+.md-typeset > h6,
+.md-typeset > blockquote,
+.md-typeset > dl,
+.md-typeset > .admonition,
+.md-typeset > details,
+.md-typeset > .byline,
+.md-typeset > .bq-exercise,
+.md-typeset > hr {
+  max-width: 40rem;
+}
+
+/* Diagrams: the inline SVGs ship without width/height, so browsers rendered
+   them at the tiny ~300px default. Fill the full content width so they are big
+   and their text scales up with them. */
+/* Material renders <figure> as fit-content, which shrank diagrams to their
+   intrinsic size. Force a wide, left-aligned media measure (sharing the text's
+   left edge) so diagrams fill it and their SVG text scales up to read well. */
+.md-typeset figure {
+  display: block;
+  width: 100%;
+  max-width: 48rem;
+  margin: var(--bq-s6) 0;
+}
+.md-typeset figure svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.md-typeset > .highlight,
+.md-typeset > table,
+.md-typeset > .md-typeset__scrollwrap,
+.md-typeset > .tabbed-set {
+  max-width: 48rem;
+}
+/* the table wrapper scrolls horizontally if a table is wider than the measure */
+.md-typeset > .md-typeset__scrollwrap { margin-left: 0; margin-right: 0; }
+.md-typeset figure > figcaption {
+  font-size: 0.68rem;
+  color: var(--md-default-fg-color--light);
+  margin-top: var(--bq-s2);
+}
+
+/* Anchorable headings: quiet permalink that appears on hover, with smooth
+   scrolling and offset so a clicked heading is not hidden under the header */
+html { scroll-behavior: smooth; }
+.md-typeset :is(h1, h2, h3, h4)[id] { scroll-margin-top: 4rem; }
+.md-typeset .headerlink {
+  opacity: 0;
+  margin-left: 0.4em;
+  color: var(--md-default-fg-color--lighter);
+  transition: opacity 0.15s ease, color 0.15s ease;
+}
+.md-typeset :is(h1, h2, h3, h4):hover .headerlink,
+.md-typeset .headerlink:focus { opacity: 1; }
+.md-typeset .headerlink:hover { color: var(--bq-next); }
+
+/* subtle author byline at the top of a chapter (not highlighted) */
+.md-typeset .byline {
+  margin-top: -0.2rem;
+  margin-bottom: 1.5rem;
+  font-size: 0.64rem;
+  color: var(--md-default-fg-color--light);
+  font-style: normal;
+}
+
+/* --------------------------------------------------------------------------
+   Sidebar: small, tidy, uniform single-line chapter rows, black active
+   -------------------------------------------------------------------------- */
+.md-sidebar { font-size: 0.64rem; }
+.md-nav { font-size: 0.64rem; line-height: 1.45; }
+
+.md-sidebar--primary .md-nav__link {
+  border-radius: 7px;
+  padding: 0.3rem 0.5rem;
+  margin: 0.05rem 0;
+  color: var(--md-default-fg-color--light);
+  transition: background-color 0.12s ease, color 0.12s ease;
+}
+.md-sidebar--primary .md-nav__link:hover { background-color: var(--bq-hover-bg); color: var(--md-default-fg-color); }
+/* active state: clear background block plus a teal left accent so a student
+   never loses their place */
+.md-sidebar--primary .md-nav__link--active {
+  color: var(--md-default-fg-color);
+  font-weight: 600;
+  background-color: var(--bq-active-bg);
+  box-shadow: inset 3px 0 0 var(--bq-next);
+}
+/* nested lesson links: lower contrast, but with real vertical breathing room
+   and a comfortable line-height so wrapped titles do not look cramped */
+.md-sidebar--primary .md-nav__item .md-nav__item .md-nav__link {
+  color: var(--md-default-fg-color--lighter);
+  padding-top: 0.42rem;
+  padding-bottom: 0.42rem;
+  line-height: 1.4;
+  margin: 0.14rem 0;
+}
+.md-sidebar--primary .md-nav__item .md-nav__item .md-nav__link:hover { color: var(--md-default-fg-color); }
+.md-sidebar--primary .md-nav__item .md-nav__item .md-nav__link--active { color: var(--md-default-fg-color); }
+
+/* --------------------------------------------------------------------------
+   Collapsible sidebar (desktop). A toggle at the top collapses the sidebar to
+   a thin rail; clicking the rail opens it again. State saved per reader.
+   -------------------------------------------------------------------------- */
+.bq-sidebar-toggle { display: none; }
+@media screen and (min-width: 76.25em) {
+  .bq-sidebar-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.75rem;
+    height: 1.75rem;
+    margin: 0 0 0.35rem auto;
+    padding: 0;
+    border: 1px solid var(--bq-line);
+    border-radius: 7px;
+    background: transparent;
+    color: var(--md-default-fg-color--light);
+    cursor: pointer;
+    transition: background-color 0.12s ease, color 0.12s ease;
+  }
+  .bq-sidebar-toggle:hover { background: var(--bq-hover-bg); color: var(--md-default-fg-color); }
+
+  .md-sidebar--primary { transition: width 0.18s ease; }
+  html.bq-sidebar-collapsed .md-sidebar--primary {
+    width: 2.6rem;
+    min-width: 2.6rem;
+    cursor: pointer;
+  }
+  html.bq-sidebar-collapsed .md-sidebar--primary .md-nav { display: none; }
+  html.bq-sidebar-collapsed .md-sidebar--primary .md-sidebar__scrollwrap { overflow: hidden; }
+  html.bq-sidebar-collapsed .bq-sidebar-toggle { margin: 0 auto; }
+  /* flip the chevron to point right (open) when collapsed */
+  html.bq-sidebar-collapsed .bq-sidebar-toggle .bq-sb-chev { transform: scaleX(-1); transform-origin: 14px 12px; }
+  html.bq-sidebar-collapsed .md-sidebar--primary:hover .bq-sidebar-toggle {
+    background: var(--bq-hover-bg);
+    color: var(--md-default-fg-color);
+  }
+}
+
+/* flat, always-open nav: no dropdown chevrons, hierarchy shown by weight + indent */
+.md-nav--primary .md-nav__icon { display: none; }
+
+/* A section row renders as div.md-nav__container wrapping an <a> plus a toggle
+   <label>, with all three carrying .md-nav__link. Left alone they each pick up
+   the hover background, so one row shows up to three overlapping highlights.
+   Neutralise the wrapper and drop the icon-only label so exactly one element
+   (the <a>) reacts to hover. */
+.md-sidebar--primary .md-nav__container {
+  padding: 0;
+  margin: 0;
+  background: none !important;
+  border-radius: 0;
+  display: flex;
+}
+.md-sidebar--primary .md-nav__container:hover { background: none; }
+.md-sidebar--primary .md-nav__container > label.md-nav__link { display: none; }
+.md-sidebar--primary .md-nav__container > a.md-nav__link { flex: 1 1 auto; }
+
+/* the active page's table of contents lives in the right sidebar; suppress the
+   copy Material embeds in the left nav, which also duplicated the page title
+   (the cause of two "Home" entries) */
+.md-sidebar--primary label.md-nav__link[for="__toc"] { display: none !important; }
+.md-sidebar--primary .md-nav--secondary { display: none !important; }
+
+/* top-level chapter rows: bold group headers, with clear separation above.
+   With navigation.indexes the row is a container div, so style its inner <a>
+   too (Home and Glossary are plain links and match the first selector). */
+.md-nav--primary > .md-nav__list > .md-nav__item > .md-nav__link,
+.md-nav--primary > .md-nav__list > .md-nav__item > .md-nav__container > a.md-nav__link {
+  min-height: 1.7rem;
+  display: flex;
+  align-items: center;
+  font-weight: 700;
+  color: var(--md-default-fg-color);
+  letter-spacing: -0.005em;
+}
+.md-nav--primary > .md-nav__list > .md-nav__item { margin-top: var(--bq-s4); }
+
+/* nested lesson list: faint guide line, indented */
+.md-nav__item .md-nav__item {
+  border-left: 1px solid var(--bq-line);
+  margin-left: 0.5rem;
+}
+
+/* right "on this page": assistive and quiet, never competing with the article.
+   Muted, smaller type; only the current heading gains full contrast. */
+.md-sidebar--secondary .md-nav__title { font-size: 0.58rem; letter-spacing: 0.08em; text-transform: uppercase; opacity: 0.55; }
+.md-sidebar--secondary { font-size: 0.62rem; }
+.md-sidebar--secondary .md-nav__link { color: var(--md-default-fg-color--lighter); transition: color 0.12s ease; }
+.md-sidebar--secondary .md-nav__link:hover { color: var(--md-default-fg-color--light); }
+.md-sidebar--secondary .md-nav__link--active { color: var(--md-default-fg-color); font-weight: 600; }
+
+/* --------------------------------------------------------------------------
+   Callouts: fresh bordered card, no left bar, no icon (B/W)
+   -------------------------------------------------------------------------- */
+.md-typeset .admonition,
+.md-typeset details {
+  border: 1px solid var(--bq-line) !important;
+  border-radius: 12px;
+  box-shadow: none;
+  background-color: transparent !important;
+  padding: 0.15rem 0.95rem 0.5rem;
+  font-size: 0.69rem;
+}
+.md-typeset .admonition-title,
+.md-typeset summary {
+  background-color: transparent !important;
+  font-weight: 600;
+  font-size: 0.66rem;
+  letter-spacing: 0.01em;
+  padding: 0.55rem 0 0.15rem;
+  margin: 0;
+}
+/* drop Material's coloured icon and its reserved space */
+.md-typeset .admonition-title::before,
+.md-typeset summary::before { display: none !important; }
+.md-typeset .admonition-title { padding-left: 0 !important; }
+.md-typeset summary { padding-left: 0 !important; }
+.md-typeset details > summary::after { color: var(--md-default-fg-color--light); }
+/* keep callouts (including the Urdu box) and tables from merging into the block
+   above or below them */
+.md-typeset .admonition,
+.md-typeset details {
+  margin-top: var(--bq-s5);
+  margin-bottom: var(--bq-s5);
+}
+.md-typeset > .md-typeset__scrollwrap,
+.md-typeset > table {
+  margin-top: var(--bq-s4);
+  margin-bottom: var(--bq-s5);
+}
+/* roomier table cells so text never sits against the cell edge */
+.md-typeset table:not([class]) th,
+.md-typeset table:not([class]) td {
+  padding: 0.62rem 0.95rem;
+}
+
+/* --------------------------------------------------------------------------
+   Mega assignment: the one deliberately bold callout per chapter, the
+   real-world challenge. Overrides the flat callout skin above on purpose.
+   -------------------------------------------------------------------------- */
+.md-typeset .admonition.bq-assignment,
+.md-typeset details.bq-assignment {
+  border: 1px solid var(--bq-next) !important;
+  border-radius: 14px;
+  background-color: var(--bq-assignment-bg) !important;
+  padding: 0.15rem 1.15rem 0.8rem 1.25rem;
+  box-shadow: 0 12px 34px -20px rgba(10, 138, 120, 0.6);
+}
+.md-typeset .bq-assignment > .admonition-title,
+.md-typeset .bq-assignment > summary {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--bq-next-deep);
+  padding: 0.75rem 0 0.3rem 1.75rem !important;
+  position: relative;
+}
+.md-typeset .bq-assignment > .admonition-title::before,
+.md-typeset .bq-assignment > summary::before {
+  display: inline-block !important;
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.68rem;
+  width: 1.2rem;
+  height: 1.2rem;
+  background-color: var(--bq-next);
+  -webkit-mask-image: var(--bq-icon-target);
+  mask-image: var(--bq-icon-target);
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+}
+[data-md-color-scheme="slate"] .md-typeset .bq-assignment > .admonition-title,
+[data-md-color-scheme="slate"] .md-typeset .bq-assignment > summary { color: #4fd6c0; }
+[data-md-color-scheme="slate"] .md-typeset .bq-assignment > .admonition-title::before,
+[data-md-color-scheme="slate"] .md-typeset .bq-assignment > summary::before { background-color: #4fd6c0; }
+.md-typeset .bq-assignment .task-list-control + * { font-weight: 500; }
+
+:root {
+  --bq-icon-target: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="black" d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2m0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8m0-14a6 6 0 1 0 6 6 6 6 0 0 0-6-6m0 10a4 4 0 1 1 4-4 4 4 0 0 1-4 4m0-6a2 2 0 1 0 2 2 2 2 0 0 0-2-2"/></svg>');
+}
+
+/* --------------------------------------------------------------------------
+   The single green accent: the "Next" button
+   -------------------------------------------------------------------------- */
+.md-typeset .next-lesson {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 0.6rem;
+  padding: 0.55rem 1.1rem;
+  border-radius: 999px;
+  background: var(--bq-next);
+  color: #fff !important;
+  font-weight: 600;
+  border: none;
+  box-shadow: 0 6px 16px -8px rgba(10, 138, 120, 0.7);
+  transition: transform 0.15s ease, background-color 0.15s ease;
+}
+.md-typeset .next-lesson:hover { background: var(--bq-next-deep); transform: translateY(-1px); }
+
+/* --------------------------------------------------------------------------
+   Search + footer: flat, grayscale
+   -------------------------------------------------------------------------- */
+.md-search__form { border-radius: 999px; box-shadow: none; background-color: rgba(255, 255, 255, 0.12); }
+[data-md-color-scheme="default"] .md-search__form { background-color: rgba(255, 255, 255, 0.12); }
+.md-search__form:hover { background-color: rgba(255, 255, 255, 0.2); }
+.md-search__input { font-size: 0.74rem; color: #ffffff; }
+.md-search__input::placeholder { color: rgba(255, 255, 255, 0.6); }
+.md-header .md-search__icon { color: rgba(255, 255, 255, 0.8); }
+.md-footer { box-shadow: none; }
+/* hide the bottom meta bar (copyright and generator notice); keep the prev/next nav */
+.md-footer-meta { display: none; }
+
+/* --------------------------------------------------------------------------
+   Text selection colour, tuned for each theme
+   -------------------------------------------------------------------------- */
+[data-md-color-scheme="default"] ::selection {
+  background-color: #2f2f2c;
+  color: #ffffff;
+}
+[data-md-color-scheme="default"] ::-moz-selection {
+  background-color: #2f2f2c;
+  color: #ffffff;
+}
+[data-md-color-scheme="slate"] ::selection {
+  background-color: rgba(255, 255, 255, 0.24);
+  color: #ffffff;
+}
+[data-md-color-scheme="slate"] ::-moz-selection {
+  background-color: rgba(255, 255, 255, 0.24);
+  color: #ffffff;
+}
+
+/* --------------------------------------------------------------------------
+   F-05 additions: glossary tooltips (abbr) and Urdu glosses
+   -------------------------------------------------------------------------- */
+
+/* The Noto Nastaliq Urdu @import lives at the top of this file (the CSS spec
+   requires @import before all other rules), so it is not repeated here. */
+
+/* Glossary terms: dotted underline, clickable, with a custom tooltip.
+   glossary-tooltip.js moves the native title into data-tip (killing the ugly
+   browser tooltip) and toggles .bq-tip-open on click. Hover works via CSS. */
+.md-typeset abbr[title],
+.md-typeset abbr[data-tip] {
+  text-decoration: none;
+  border-bottom: 1px dotted var(--md-default-fg-color--light);
+  cursor: pointer;
+}
+.md-typeset abbr[data-tip] { position: relative; }
+
+/* the tooltip bubble: an inverted box, so it auto-themes (dark on light pages,
+   light on dark pages) and always has strong contrast */
+.md-typeset abbr[data-tip]::after {
+  content: attr(data-tip);
+  position: absolute;
+  left: 50%;
+  bottom: calc(100% + 9px);
+  transform: translateX(-50%) translateY(3px);
+  z-index: 30;
+  width: max-content;
+  max-width: 250px;
+  white-space: normal;
+  text-align: left;
+  font-size: 0.66rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.5;
+  padding: 0.5rem 0.65rem;
+  border-radius: 9px;
+  background: var(--md-default-fg-color);
+  color: var(--md-default-bg-color);
+  box-shadow: 0 8px 24px -8px rgba(0, 0, 0, 0.45);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.13s ease, transform 0.13s ease;
+}
+/* the small arrow under the bubble */
+.md-typeset abbr[data-tip]::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: calc(100% + 4px);
+  transform: translateX(-50%) translateY(3px);
+  z-index: 30;
+  border: 5px solid transparent;
+  border-top-color: var(--md-default-fg-color);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.13s ease, transform 0.13s ease;
+}
+.md-typeset abbr[data-tip]:hover::after,
+.md-typeset abbr[data-tip]:hover::before,
+.md-typeset abbr[data-tip].bq-tip-open::after,
+.md-typeset abbr[data-tip].bq-tip-open::before {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* when there is little room above the term, the JS adds .bq-tip-below and the
+   bubble (and its arrow) flip to sit underneath instead */
+.md-typeset abbr.bq-tip-below::after {
+  top: calc(100% + 9px);
+  bottom: auto;
+}
+.md-typeset abbr.bq-tip-below::before {
+  top: calc(100% + 4px);
+  bottom: auto;
+  border-top-color: transparent;
+  border-bottom-color: var(--md-default-fg-color);
+}
+
+/* All Urdu (Nastaliq) text renders right-to-left and a touch larger than the
+   surrounding English, because Nastaliq is hard to read at small sizes.
+   English body type is 0.7rem; Urdu sits a step above it. */
+
+/* inline Urdu glosses written in Nastaliq */
+.md-typeset .ur,
+.md-typeset [lang="ur"] {
+  font-family: "Noto Nastaliq Urdu", serif;
+  direction: rtl;
+  line-height: 2.2;
+  font-size: 1.3em;
+}
+
+/* body of the Urdu explanation box, both the collapsible (???) and static (!!!) forms */
+.md-typeset details.urdu > *:not(summary),
+.md-typeset .admonition.urdu > *:not(.admonition-title) {
+  font-family: "Noto Nastaliq Urdu", serif;
+  direction: rtl;
+  line-height: 2.2;
+  font-size: 0.88rem;
+}
+
+/* the Urdu box title also renders in Nastaliq, right-to-left */
+.md-typeset details.urdu > summary,
+.md-typeset .admonition.urdu > .admonition-title {
+  font-family: "Noto Nastaliq Urdu", serif;
+  direction: rtl;
+  line-height: 2.2;
+  font-size: 0.82rem;
+}
+
+/* --------------------------------------------------------------------------
+   Inline diagrams in dark mode.
+   Every diagram uses the same token set: #ffffff panels, #1f1f1c ink for
+   strokes and text, #6b6b65 for secondary labels, currentColor for adaptive
+   lines. In dark mode the white panels glare and the near-black text sits on
+   them oddly, so remap those three fixed tokens to theme-aware values. The
+   currentColor parts already adapt on their own.
+   -------------------------------------------------------------------------- */
+[data-md-color-scheme="slate"] .md-typeset figure svg [fill="#ffffff"] {
+  fill: var(--md-default-bg-color);
+}
+[data-md-color-scheme="slate"] .md-typeset figure svg [fill="#1f1f1c"] {
+  fill: rgba(255, 255, 255, 0.86);
+}
+[data-md-color-scheme="slate"] .md-typeset figure svg [stroke="#1f1f1c"] {
+  stroke: rgba(255, 255, 255, 0.55);
+}
+[data-md-color-scheme="slate"] .md-typeset figure svg [fill="#6b6b65"] {
+  fill: rgba(255, 255, 255, 0.6);
+}
+[data-md-color-scheme="slate"] .md-typeset figure svg [stroke="#6b6b65"] {
+  stroke: rgba(255, 255, 255, 0.4);
+}
+
+/* --------------------------------------------------------------------------
+   Roman Urdu toggle (see javascripts/language-toggle.js).
+   The inline "(Roman Urdu: ...)" helpers are hidden by default so the lesson
+   reads as clean English. The header toggle reveals them and remembers the
+   reader's choice.
+   -------------------------------------------------------------------------- */
+
+/* inline Roman Urdu helper text, hidden unless the reader turns it on */
+.ru-gloss {
+  color: var(--md-default-fg-color--light);
+  font-style: italic;
+}
+body:not(.bq-show-roman) .ru-gloss {
+  display: none;
+}
+
+/* let the long site title shrink so it never pushes the search off-screen */
+.md-header__inner .md-header__title { min-width: 0; }
+
+/* the header toggle: a small pill that sits with the other header controls */
+.bq-roman-toggle {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  height: 1.55rem;
+  margin: 0 0.3rem;
+  padding: 0 0.6rem;
+  font-size: 0.62rem;
+  font-weight: 600;
+  white-space: nowrap;
+  color: var(--md-primary-bg-color);
+  background: transparent;
+  border: 1px solid color-mix(in oklab, var(--md-primary-bg-color) 35%, transparent);
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+.bq-roman-toggle:hover { border-color: var(--md-primary-bg-color); }
+.bq-roman-toggle .bq-roman-ico {
+  font-size: 0.8em;
+  line-height: 1;
+}
+/* the On/Off state badge inside the Roman Urdu toggle, so it reads as a switch */
+.bq-roman-toggle .bq-roman-state {
+  font-weight: 700;
+  margin-left: 0.1rem;
+  padding-left: 0.4rem;
+  border-left: 1px solid currentColor;
+  opacity: 0.85;
+}
+.bq-roman-toggle.is-on {
+  background: var(--bq-next);
+  border-color: var(--bq-next);
+  color: #fff;
+}
+
+/* on the smallest screens trim it a touch more */
+@media screen and (max-width: 44.9em) {
+  .bq-roman-toggle {
+    font-size: 0.58rem;
+    padding: 0 0.45rem;
+    margin: 0 0.2rem;
+  }
+}

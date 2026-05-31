@@ -1,0 +1,984 @@
+/* ==========================================================================
+   Bano Qabil books: editorial skin for MkDocs Material.
+
+   Design direction (see NEW_DESIGN_DIRECTION.html for the reference):
+   - Warm-paper light theme / deep green-tinted dark theme (dark is default)
+   - Full teal scale + a saffron secondary; teal is the working accent
+   - Fraunces (display serif) for headings and the brand; Inter for body;
+     JetBrains Mono for code
+   - Code blocks read as dark terminal cards in BOTH themes
+   - Callouts use a left accent rule + a faint tint (teal / saffron / red)
+   - Generous reading measure, clear section rhythm (teal rule under each H2)
+
+   Functional hooks preserved from the previous skin: the Roman Urdu header
+   toggle + inline glosses, glossary abbr tooltips, Nastaliq Urdu boxes, the
+   collapsible sidebar, the course-switcher bar, the bold assignment callout,
+   and the dark-mode remap for inline SVG diagrams.
+   ========================================================================== */
+
+/* Font imports MUST precede every other rule, or the browser drops them.
+   Nastaliq (Urdu), Fraunces (display), Inter (body), JetBrains Mono (code). */
+@import url("https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;500;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,400..700,30..100;1,9..144,400..600,30..100&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap");
+
+:root {
+  /* ----- teal scale (the brand) ----- */
+  --teal-50:  #e7faf6;
+  --teal-100: #c1f0e6;
+  --teal-200: #87e0ce;
+  --teal-300: #4dceb2;
+  --teal-400: #1fbb98;
+  --teal-500: #0fab95;
+  --teal-600: #0a8e7c;
+  --teal-700: #0a7065;
+  --teal-800: #0a584f;
+  --teal-900: #073f39;
+
+  /* ----- saffron (the one warm secondary, used by warnings) ----- */
+  --saffron-400: #efb45a;
+  --saffron-500: #e29420;
+
+  /* ----- type ----- */
+  --font-display: "Fraunces", Georgia, serif;
+  --bq-mono: "JetBrains Mono", ui-monospace, "SF Mono", Consolas, monospace;
+
+  /* ----- spacing scale ----- */
+  --bq-s1: 0.25rem; --bq-s2: 0.5rem;  --bq-s3: 0.75rem; --bq-s4: 1rem;
+  --bq-s5: 1.5rem;  --bq-s6: 2rem;    --bq-s7: 3rem;    --bq-s8: 4rem;
+
+  /* dark terminal-card palette for code, shared by both themes */
+  --bq-code-bg:      #0d1413;
+  --bq-code-head:    #131c1a;
+  --bq-code-border:  #1f2b29;
+  --bq-code-text:    #e8eaec;
+}
+
+/* --------------------------------------------------------------------------
+   LIGHT — warm paper, soft ink, teal accent
+   -------------------------------------------------------------------------- */
+[data-md-color-scheme="default"] {
+  --md-primary-fg-color: #0e1110;            /* header stays a dark brand bar */
+  --md-primary-fg-color--light: #0e1110;
+  --md-primary-fg-color--dark: #0e1110;
+  --md-primary-bg-color: #ffffff;
+  --md-primary-bg-color--light: rgba(255,255,255,0.7);
+
+  --md-default-bg-color: #faf8f3;            /* warm paper */
+  --md-default-fg-color: #1a1a1a;
+  --md-default-fg-color--light: #5b5a55;
+  --md-default-fg-color--lighter: #8a877f;
+  --md-default-fg-color--lightest: #ebe5d6;
+  --md-typeset-color: #1a1a1a;
+
+  --md-accent-fg-color: var(--teal-700);
+  --md-typeset-a-color: var(--teal-700);
+  --md-footer-bg-color: #faf8f3;
+  --md-footer-bg-color--dark: #faf8f3;
+  --md-footer-fg-color: #1a1a1a;
+  --md-footer-fg-color--light: #5b5a55;
+  --md-footer-fg-color--lighter: #8a877f;
+
+  --bq-accent: var(--teal-600);
+  --bq-accent-hi: var(--teal-700);
+  --bq-accent-soft: var(--teal-50);
+  --bq-ink-strong: #000000;
+
+  --bq-active-bg: var(--teal-50);
+  --bq-hover-bg: #f3efe5;
+  --bq-line: #e3dccb;
+  --bq-line-hi: #cfc6ad;
+  --bq-surface: #fffdf7;
+  --bq-surface-2: #f3efe5;
+  --bq-surface-3: #ebe5d6;
+  --bq-assignment-bg: var(--teal-50);
+  --bq-scroll-thumb: rgba(60,40,10,0.18);
+  --bq-scroll-thumb-hover: rgba(60,40,10,0.34);
+  --bq-shadow: 0 6px 22px rgba(60,40,10,0.10);
+  --bq-shadow-lg: 0 18px 48px rgba(60,40,10,0.14);
+}
+
+/* --------------------------------------------------------------------------
+   DARK (default) — deep green-tinted, soft warm ink, brighter teal accent
+   -------------------------------------------------------------------------- */
+[data-md-color-scheme="slate"] {
+  --md-hue: 170;
+  --md-primary-fg-color: #0b0e0d;
+  --md-primary-fg-color--light: #0b0e0d;
+  --md-primary-fg-color--dark: #0b0e0d;
+  --md-primary-bg-color: #f4f4f2;
+
+  --md-default-bg-color: #0e1110;            /* deepest layer: the page */
+  --md-default-fg-color: #e8e6df;
+  --md-default-fg-color--light: #9da19a;
+  --md-default-fg-color--lighter: #6a6e69;
+  --md-default-fg-color--lightest: #232927;
+  --md-typeset-color: #e8e6df;
+
+  --md-accent-fg-color: var(--teal-200);
+  --md-typeset-a-color: var(--teal-300);
+  --md-footer-bg-color: #0e1110;
+  --md-footer-bg-color--dark: #0e1110;
+  --md-footer-fg-color: #e8e6df;
+  --md-footer-fg-color--light: #9da19a;
+  --md-footer-fg-color--lighter: #6a6e69;
+
+  --bq-accent: var(--teal-300);
+  --bq-accent-hi: var(--teal-200);
+  --bq-accent-soft: rgba(15,171,149,0.12);
+  --bq-ink-strong: #ffffff;
+
+  --bq-active-bg: rgba(15,171,149,0.12);
+  --bq-hover-bg: rgba(255,255,255,0.05);
+  --bq-line: #232927;
+  --bq-line-hi: #2f3735;
+  --bq-surface: #161a19;
+  --bq-surface-2: #1b201f;
+  --bq-surface-3: #232927;
+  --bq-assignment-bg: rgba(15,171,149,0.08);
+  --bq-scroll-thumb: rgba(255,255,255,0.16);
+  --bq-scroll-thumb-hover: rgba(255,255,255,0.32);
+  --bq-shadow: 0 6px 20px rgba(0,0,0,0.35);
+  --bq-shadow-lg: 0 20px 60px rgba(0,0,0,0.5);
+}
+
+/* code highlight tokens: same dark terminal palette in both themes */
+[data-md-color-scheme="default"],
+[data-md-color-scheme="slate"] {
+  --md-code-bg-color: var(--bq-code-bg);
+  --md-code-fg-color: var(--bq-code-text);
+  --md-code-hl-color: rgba(15,171,149,0.18);
+  --md-code-hl-comment-color: #5b6770;
+  --md-code-hl-keyword-color: #c678dd;
+  --md-code-hl-string-color: #98d181;
+  --md-code-hl-number-color: #d19a66;
+  --md-code-hl-function-color: #61afef;
+  --md-code-hl-name-color: #e8eaec;
+  --md-code-hl-constant-color: #d19a66;
+  --md-code-hl-operator-color: #8a9099;
+  --md-code-hl-punctuation-color: #8a9099;
+  --md-code-hl-variable-color: #e8eaec;
+  --md-code-hl-special-color: #56b6c2;
+}
+
+/* --------------------------------------------------------------------------
+   Layout: sidebar flush left, generous content area, narrow reading measure
+   -------------------------------------------------------------------------- */
+.md-grid { max-width: none; }
+.md-main__inner { margin: 0; max-width: none; }
+.md-sidebar--primary { left: 0; }
+
+@media screen and (min-width: 76.25em) {
+  /* a hairline on the right separates the rail from the article */
+  .md-sidebar--primary { width: 16rem; border-right: 1px solid var(--bq-line); }
+  .md-content { max-width: 60rem; margin: 0 auto; }
+  .md-content__inner { margin: 0 var(--bq-s8); }
+  .md-nav--primary > .md-nav__title { display: none; }
+}
+
+.md-header__inner { min-height: 2.5rem; }
+.md-header__inner > .md-header__button.md-logo { padding: 0.2rem; margin: 0.1rem; }
+
+/* Sidebar scrollbar: thin and quiet */
+.md-sidebar__scrollwrap {
+  scrollbar-width: thin;
+  scrollbar-color: var(--bq-scroll-thumb) transparent;
+}
+.md-sidebar__scrollwrap::-webkit-scrollbar { width: 5px; height: 5px; }
+.md-sidebar__scrollwrap::-webkit-scrollbar-track { background: transparent; }
+.md-sidebar__scrollwrap::-webkit-scrollbar-thumb { background-color: var(--bq-scroll-thumb); border-radius: 999px; }
+.md-sidebar__scrollwrap::-webkit-scrollbar-thumb:hover { background-color: var(--bq-scroll-thumb-hover); }
+
+/* --------------------------------------------------------------------------
+   Header: a calm dark brand bar with a subtle blur, in both themes
+   -------------------------------------------------------------------------- */
+.md-header {
+  box-shadow: none;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  background-color: color-mix(in srgb, #0e1110 90%, transparent);
+  backdrop-filter: saturate(160%) blur(14px);
+  -webkit-backdrop-filter: saturate(160%) blur(14px);
+  color: #ffffff;
+}
+.md-header--shadow { box-shadow: none; }
+.md-header__inner { gap: 0.9rem; padding-top: 0.35rem; padding-bottom: 0.35rem; }
+.md-header__button { color: #ffffff; }
+
+/* brand: star + name (Fraunces). High specificity to beat .md-logo's block. */
+.md-header__button.bq-brand {
+  display: inline-flex; align-items: center; gap: 0.45rem;
+  margin: 0; padding: 0; order: 0; flex-shrink: 0;
+  width: auto; height: auto;
+  color: #ffffff !important; opacity: 1;
+}
+.bq-brand:hover { opacity: 1; }
+/* the Bano Qabil logo, recolored to a solid green overlay via an alpha mask */
+.bq-brand__logo {
+  width: 1.7rem; height: 1.7rem; flex-shrink: 0;
+  background-color: var(--teal-300);
+  -webkit-mask: url("../assets/img/logo.png") center / contain no-repeat;
+  mask: url("../assets/img/logo.png") center / contain no-repeat;
+}
+.bq-brand__name {
+  font-family: var(--font-display);
+  font-weight: 600; font-size: 1.02rem; letter-spacing: -0.01em;
+  color: #ffffff; white-space: nowrap;
+}
+
+/* breadcrumb */
+.bq-crumb {
+  order: 1; display: flex; align-items: center; gap: 0.5rem; min-width: 0;
+  font-size: 0.72rem; color: rgba(255,255,255,0.6); white-space: nowrap;
+}
+.bq-crumb__course { color: rgba(255,255,255,0.6); }
+.bq-crumb__sep { color: rgba(255,255,255,0.32); }
+.bq-crumb b { color: rgba(255,255,255,0.92); font-weight: 500; overflow: hidden; text-overflow: ellipsis; }
+/* hide the separator when there is no chapter (home / glossary) */
+.bq-crumb:has(.bq-crumb__chapter:empty) .bq-crumb__sep { display: none; }
+
+.bq-top-spacer { order: 2; flex: 1 1 auto; }
+
+/* search: Material's real box, slimmed into a compact pill, sits at the right */
+.md-header .md-search { order: 3; flex: 0 0 auto; padding: 0; }
+.md-header .md-search__icon[for="__search"] { order: 3; }
+@media screen and (min-width: 60em) {
+  .md-search__form {
+    width: 13rem; height: 1.85rem; border-radius: 9px;
+    background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12);
+    box-shadow: none; transition: background 0.14s ease, border-color 0.14s ease, width 0.2s ease;
+  }
+  .md-search__form:hover { background: rgba(255,255,255,0.14); border-color: rgba(255,255,255,0.22); }
+  [data-md-toggle="search"]:checked ~ .md-header .md-search__form { width: 18rem; background: rgba(255,255,255,0.16); }
+  .md-search__input { font-size: 0.72rem; }
+  .md-search__input::placeholder { color: rgba(255,255,255,0.6); }
+  .md-search__output { top: 1.9rem; border-radius: 10px; }
+}
+
+/* Roman Urdu switch + theme toggle sit at the far right */
+.md-header .bq-roman-toggle { order: 4; }
+.md-header .md-header__option { order: 5; }
+.md-header__option .md-header__button.md-icon { color: #ffffff; }
+
+@media screen and (max-width: 76.24em) {
+  .bq-crumb { display: none; }
+  /* on mobile the toggles live in the drawer instead of the cramped header */
+  .md-header .bq-roman-toggle { display: none; }
+  /* keep the palette rendered (so the drawer theme button can click its radio)
+     but visually hide it; display:none would make the radios unclickable */
+  .md-header .md-header__option {
+    position: absolute; width: 1px; height: 1px;
+    overflow: hidden; clip: rect(0 0 0 0); opacity: 0;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Mobile drawer controls (javascripts/mobile-controls.js): the Roman Urdu
+   switch + theme toggle, shown only inside the drawer on small screens.
+   -------------------------------------------------------------------------- */
+.bq-mobile-controls { display: none; }
+@media screen and (max-width: 76.24em) {
+  /* pinned to the bottom of the drawer panel, always visible above the nav panes */
+  .bq-mobile-controls {
+    display: flex; flex-direction: column; gap: 0.2rem;
+    position: absolute; left: 0; right: 0; bottom: 0; z-index: 10;
+    padding: 0.6rem 0.8rem calc(0.8rem + env(safe-area-inset-bottom, 0px));
+    background: var(--md-default-bg-color);
+    border-top: 1px solid var(--bq-line);
+  }
+  /* room so the last nav item is not hidden behind the pinned controls */
+  .md-sidebar--primary .md-sidebar__scrollwrap { padding-bottom: 6rem; }
+  /* the Roman Urdu switch, re-themed for the drawer (not the dark header) */
+  .bq-roman-toggle--mobile {
+    width: 100%; height: auto; margin: 0; padding: 0.55rem 0.6rem;
+    justify-content: space-between; border-radius: 8px;
+    color: var(--md-default-fg-color); font-size: 0.78rem;
+  }
+  .bq-roman-toggle--mobile:hover { background: var(--bq-hover-bg); color: var(--md-default-fg-color); }
+  /* higher specificity so the drawer keeps its label (the 44.9em rule hides it) */
+  .bq-mobile-controls .bq-roman-toggle--mobile .bq-roman-label { display: inline; }
+  .bq-mobile-controls .bq-roman-toggle--mobile { gap: 0.5rem; }
+  .bq-roman-toggle--mobile .bq-roman-track { background: var(--bq-surface-3); border-color: var(--bq-line-hi); }
+  .bq-roman-toggle--mobile .bq-roman-track::after { background: var(--md-default-fg-color--light); }
+  .bq-roman-toggle--mobile.is-on .bq-roman-track { background: var(--bq-accent-soft); border-color: var(--bq-accent); }
+  .bq-roman-toggle--mobile.is-on .bq-roman-track::after { background: var(--bq-accent); }
+
+  /* the theme toggle, styled to match a drawer row */
+  .bq-mobile-theme {
+    display: flex; align-items: center; gap: 0.55rem;
+    width: 100%; padding: 0.55rem 0.6rem; border: none; border-radius: 8px;
+    background: transparent; color: var(--md-default-fg-color);
+    font-size: 0.78rem; cursor: pointer; text-align: left;
+    transition: background 0.12s ease;
+  }
+  .bq-mobile-theme:hover { background: var(--bq-hover-bg); }
+  .bq-mobile-theme svg { width: 0.95rem; height: 0.95rem; color: var(--bq-accent); flex-shrink: 0; }
+}
+
+/* --------------------------------------------------------------------------
+   Course-switcher bar (markup in overrides/main.html)
+   -------------------------------------------------------------------------- */
+.bq-course-bar {
+  background-color: color-mix(in srgb, #0e1110 92%, transparent);
+  backdrop-filter: saturate(160%) blur(14px);
+  -webkit-backdrop-filter: saturate(160%) blur(14px);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.bq-course-bar__inner { display: flex; align-items: center; gap: 0.2rem; height: 2.1rem; padding: 0 0.9rem; }
+.bq-course-bar__label {
+  font-family: var(--bq-mono);
+  font-size: 0.56rem; text-transform: uppercase; letter-spacing: 0.12em;
+  color: rgba(255,255,255,0.42); margin-right: 0.7rem;
+}
+.bq-course {
+  display: inline-flex; align-items: center; gap: 0.35rem;
+  margin: 0 0.55rem; padding: 0.5rem 0.1rem;
+  font-size: 0.66rem; font-weight: 600; color: rgba(255,255,255,0.66);
+  text-decoration: none; border-bottom: 2px solid transparent;
+}
+.bq-course:hover { color: #ffffff; }
+.bq-course.is-active { color: #ffffff; border-bottom-color: var(--teal-300); }
+.bq-course.is-soon { color: rgba(255,255,255,0.32); cursor: default; }
+.bq-course.is-soon em {
+  font-style: normal; font-family: var(--bq-mono);
+  font-size: 0.5rem; text-transform: uppercase; letter-spacing: 0.05em;
+  padding: 0.05rem 0.32rem; border: 1px solid rgba(255,255,255,0.25); border-radius: 999px;
+}
+.bq-course-bar__home {
+  margin-left: auto; font-size: 0.62rem; font-weight: 500;
+  color: rgba(255,255,255,0.5); text-decoration: none; white-space: nowrap;
+}
+.bq-course-bar__home:hover { color: #ffffff; }
+
+/* --------------------------------------------------------------------------
+   Typography: Fraunces headings, generous body, teal section rules
+   -------------------------------------------------------------------------- */
+.md-typeset { font-size: 0.72rem; line-height: 1.7; color: var(--md-default-fg-color); }
+.md-typeset p { margin: 0 0 var(--bq-s4); max-width: 64ch; }
+
+.md-typeset h1 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(1.6rem, 1.3rem + 1.1vw, 1.95rem);
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+  color: var(--bq-ink-strong);
+  margin: 0 0 var(--bq-s4);
+  font-variation-settings: "SOFT" 50;
+}
+/* H2: thin teal rule above the title, strong top rhythm, no full divider */
+.md-typeset h2 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.3rem;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  color: var(--bq-ink-strong);
+  margin: var(--bq-s7) 0 var(--bq-s3);
+  padding-top: var(--bq-s4);
+  border-top: none;
+  position: relative;
+}
+.md-typeset h2::before {
+  content: "";
+  position: absolute; top: 0; left: 0;
+  width: 2.1rem; height: 2px;
+  background: var(--bq-accent);
+  border-radius: 1px;
+}
+.md-typeset h3 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.02rem;
+  letter-spacing: -0.01em;
+  color: var(--bq-ink-strong);
+  margin-top: var(--bq-s5);
+  margin-bottom: var(--bq-s2);
+}
+.md-typeset h4 { font-family: var(--font-display); font-weight: 600; font-size: 0.85rem; margin-top: var(--bq-s4); }
+/* first section after the title keeps its rule but loses the big gap */
+.md-typeset h1 + h2 { margin-top: var(--bq-s5); }
+
+/* the opening paragraph reads as a lead */
+.md-typeset h1 + p {
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: var(--md-default-fg-color);
+  font-weight: 400;
+  letter-spacing: -0.005em;
+  margin-bottom: var(--bq-s5);
+}
+
+.md-typeset a {
+  color: var(--md-typeset-a-color);
+  text-decoration: none;
+  border-bottom: 1px solid color-mix(in oklab, var(--md-typeset-a-color) 30%, transparent);
+  transition: border-color 0.15s ease, color 0.15s ease;
+}
+.md-typeset a:hover { color: var(--bq-accent-hi); border-bottom-color: currentColor; }
+
+.md-typeset ul, .md-typeset ol { max-width: 64ch; }
+.md-typeset ul li::marker { color: var(--bq-accent); }
+.md-typeset ol li::marker { color: var(--bq-accent); font-weight: 600; }
+.md-typeset li { margin: 0.3rem 0; }
+
+/* inline code: a quiet pill in the accent */
+.md-typeset code:not(pre code) {
+  font-family: var(--bq-mono);
+  font-size: 0.82em;
+  background: var(--bq-surface-2);
+  border: 1px solid var(--bq-line);
+  color: var(--bq-accent);
+  padding: 0.1em 0.4em;
+  border-radius: 5px;
+  font-weight: 500;
+}
+
+/* --------------------------------------------------------------------------
+   Code blocks: dark terminal cards with a faux title strip + traffic dots
+   -------------------------------------------------------------------------- */
+.md-typeset pre > code { font-size: 0.7rem; line-height: 1.65; font-family: var(--bq-mono); background: transparent; }
+.md-typeset .highlight {
+  position: relative;
+  border: 1px solid var(--bq-code-border);
+  background-color: var(--bq-code-bg);
+  border-radius: 14px;
+  box-shadow: var(--bq-shadow);
+  overflow: hidden;
+  margin: var(--bq-s5) 0;
+}
+/* the title strip */
+.md-typeset .highlight::before {
+  content: "";
+  position: absolute; top: 0; left: 0; right: 0; height: 2.15rem;
+  background: var(--bq-code-head);
+  border-bottom: 1px solid var(--bq-code-border);
+}
+/* three muted traffic-light dots */
+.md-typeset .highlight::after {
+  content: "";
+  position: absolute; top: 0.85rem; left: 0.95rem;
+  width: 8px; height: 8px; border-radius: 50%;
+  background: #6b7c79;
+  box-shadow: 14px 0 0 #6b7c79, 28px 0 0 #6b7c79;
+  opacity: 0.55;
+}
+.md-typeset .highlight > pre,
+.md-typeset .highlight > .filename,
+.md-typeset .highlight > table { position: relative; }
+.md-typeset .highlight pre { margin: 0; }
+.md-typeset .highlight > pre { padding: 2.15rem 0 0; }
+.md-typeset .highlight > pre > code { display: block; padding: 0.9rem 1.1rem 1.1rem; }
+/* line-number table variant (anchor_linenums) keeps the same top strip */
+.md-typeset .highlight > table { margin-top: 2.15rem; width: 100%; }
+.md-typeset .highlight pre::-webkit-scrollbar { height: 6px; }
+.md-typeset .highlight pre::-webkit-scrollbar-thumb { background: #2a302e; border-radius: 3px; }
+
+/* Material's copy button: sits inside the title strip, teal on hover */
+.md-typeset .highlight .md-clipboard {
+  top: 0.5rem; right: 0.6rem; color: #8a9099; z-index: 2;
+}
+.md-typeset .highlight .md-clipboard:hover { color: var(--teal-300); }
+
+/* a named code fence shows its filename in the strip */
+.md-typeset .highlight span.filename {
+  position: absolute; top: 0; left: 3.4rem; height: 2.15rem;
+  display: flex; align-items: center;
+  background: transparent; border: none;
+  font-family: var(--bq-mono); font-size: 0.66rem; color: #9da19a; z-index: 2;
+}
+.md-typeset .highlight span.filename + pre > code { padding-top: 0.9rem; }
+
+/* inline highlight (`#!bash ...`) should not get the card treatment */
+.md-typeset .highlight.inlinehilite,
+.md-typeset code.highlight { all: revert; }
+
+/* --------------------------------------------------------------------------
+   Reading measure: prose narrow, media (figures/tables/code) wider
+   -------------------------------------------------------------------------- */
+.md-typeset > p, .md-typeset > ul, .md-typeset > ol,
+.md-typeset > h1, .md-typeset > h2, .md-typeset > h3, .md-typeset > h4,
+.md-typeset > h5, .md-typeset > h6, .md-typeset > blockquote,
+.md-typeset > dl, .md-typeset > .admonition, .md-typeset > details,
+.md-typeset > .byline, .md-typeset > .bq-exercise, .md-typeset > hr {
+  max-width: 42rem;
+}
+.md-typeset > .highlight, .md-typeset > table,
+.md-typeset > .md-typeset__scrollwrap, .md-typeset > .tabbed-set {
+  max-width: 48rem;
+}
+.md-typeset > .md-typeset__scrollwrap { margin-left: 0; margin-right: 0; }
+
+/* Diagrams fill the wider media measure so labels stay legible */
+.md-typeset figure { display: block; width: 100%; max-width: 48rem; margin: var(--bq-s6) 0; }
+.md-typeset figure svg { width: 100%; height: auto; display: block; }
+.md-typeset figure > figcaption {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 0.74rem;
+  color: var(--md-default-fg-color--light);
+  margin-top: var(--bq-s3);
+  text-align: center;
+}
+
+/* Anchorable headings */
+html { scroll-behavior: smooth; }
+.md-typeset :is(h1, h2, h3, h4)[id] { scroll-margin-top: 4.5rem; }
+.md-typeset .headerlink {
+  opacity: 0; margin-left: 0.4em; color: var(--md-default-fg-color--lighter);
+  transition: opacity 0.15s ease, color 0.15s ease;
+}
+.md-typeset :is(h1, h2, h3, h4):hover .headerlink,
+.md-typeset .headerlink:focus { opacity: 1; }
+.md-typeset .headerlink:hover { color: var(--bq-accent); }
+
+/* author byline at the top of a chapter */
+.md-typeset .byline {
+  font-family: var(--font-display);
+  font-style: italic;
+  margin-top: -0.2rem; margin-bottom: 1.6rem;
+  font-size: 0.74rem; color: var(--md-default-fg-color--light);
+}
+.md-typeset .byline b { font-style: normal; font-weight: 500; color: var(--md-default-fg-color); }
+
+/* --------------------------------------------------------------------------
+   Tables: editorial — mono uppercase headers, hairline rows
+   -------------------------------------------------------------------------- */
+.md-typeset table:not([class]) {
+  border-radius: 0; border: none; box-shadow: none;
+  font-size: 0.7rem;
+}
+.md-typeset table:not([class]) th {
+  background: transparent;
+  font-family: var(--bq-mono);
+  font-weight: 600; font-size: 0.62rem;
+  letter-spacing: 0.06em; text-transform: uppercase;
+  color: var(--md-default-fg-color--light);
+  border-bottom: 1px solid var(--md-default-fg-color);
+  padding: 0.5rem 0.85rem;
+}
+.md-typeset table:not([class]) td {
+  border-bottom: 1px solid var(--bq-line);
+  padding: 0.62rem 0.85rem; vertical-align: top;
+}
+.md-typeset table:not([class]) tr:last-child td { border-bottom: none; }
+.md-typeset > .md-typeset__scrollwrap, .md-typeset > table {
+  margin-top: var(--bq-s4); margin-bottom: var(--bq-s5);
+}
+
+/* --------------------------------------------------------------------------
+   Sidebar: Fraunces chapter headers, mono-feel lessons, teal active rule
+   -------------------------------------------------------------------------- */
+.md-sidebar { font-size: 0.66rem; }
+.md-nav { font-size: 0.66rem; line-height: 1.5; }
+
+.md-sidebar--primary .md-nav__link {
+  border-radius: 7px; padding: 0.32rem 0.5rem; margin: 0.05rem 0;
+  color: var(--md-default-fg-color--light);
+  transition: background-color 0.12s ease, color 0.12s ease;
+  /* one line only; overflow is trimmed with an ellipsis (full text on hover) */
+  display: block; min-width: 0;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.md-sidebar--primary .md-nav__link:hover { background-color: var(--bq-hover-bg); color: var(--md-default-fg-color); }
+/* active row: a green→transparent gradient (no left border); the fade reads as
+   "you are here" while keeping the label legible past the strong left edge */
+.md-sidebar--primary .md-nav__link--active {
+  color: var(--md-default-fg-color); font-weight: 600;
+  background-color: transparent;
+  background-image: linear-gradient(
+    90deg,
+    color-mix(in srgb, var(--bq-accent) 55%, transparent) 0%,
+    color-mix(in srgb, var(--bq-accent) 0%, transparent) 100%
+  );
+}
+.md-sidebar--primary .md-nav__item .md-nav__item .md-nav__link {
+  color: var(--md-default-fg-color--lighter);
+  padding-top: 0.42rem; padding-bottom: 0.42rem; line-height: 1.4; margin: 0.14rem 0;
+}
+.md-sidebar--primary .md-nav__item .md-nav__item .md-nav__link:hover { color: var(--md-default-fg-color); }
+.md-sidebar--primary .md-nav__item .md-nav__item .md-nav__link--active { color: var(--md-default-fg-color); }
+
+/* collapsible sidebar (desktop) */
+.bq-sidebar-toggle { display: none; }
+@media screen and (min-width: 76.25em) {
+  .bq-sidebar-toggle {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 1.3rem; height: 1.3rem; margin: 0 0 0 auto; padding: 0;
+    border: none; border-radius: 6px; background: transparent;
+    color: var(--md-default-fg-color--lighter); cursor: pointer;
+    transition: background-color 0.12s ease, color 0.12s ease;
+  }
+  .bq-sidebar-toggle svg { width: 14px; height: 14px; }
+  .bq-sidebar-toggle:hover { background: var(--bq-hover-bg); color: var(--md-default-fg-color); }
+  .md-sidebar--primary { transition: width 0.18s ease; }
+  html.bq-sidebar-collapsed .md-sidebar--primary { width: 2.6rem; min-width: 2.6rem; cursor: pointer; }
+  html.bq-sidebar-collapsed .md-sidebar--primary .md-nav { display: none; }
+  html.bq-sidebar-collapsed .md-sidebar--primary .md-sidebar__scrollwrap { overflow: hidden; }
+  html.bq-sidebar-collapsed .bq-sidebar-toggle { margin: 0 auto; }
+  html.bq-sidebar-collapsed .bq-sidebar-toggle .bq-sb-chev { transform: scaleX(-1); transform-origin: 14px 12px; }
+  html.bq-sidebar-collapsed .md-sidebar--primary:hover .bq-sidebar-toggle { background: var(--bq-hover-bg); color: var(--md-default-fg-color); }
+}
+
+/* flat, always-open nav */
+.md-nav--primary .md-nav__icon { display: none; }
+.md-sidebar--primary .md-nav__container { padding: 0; margin: 0; background: none !important; border-radius: 0; display: flex; }
+.md-sidebar--primary .md-nav__container:hover { background: none; }
+.md-sidebar--primary .md-nav__container > label.md-nav__link { display: none; }
+.md-sidebar--primary .md-nav__container > a.md-nav__link { flex: 1 1 auto; min-width: 0; }
+.md-sidebar--primary label.md-nav__link[for="__toc"] { display: none !important; }
+.md-sidebar--primary .md-nav--secondary { display: none !important; }
+
+/* top-level chapter rows: Fraunces group headers */
+.md-nav--primary > .md-nav__list > .md-nav__item > .md-nav__link,
+.md-nav--primary > .md-nav__list > .md-nav__item > .md-nav__container > a.md-nav__link {
+  display: block; line-height: 1.7rem;
+  font-family: var(--font-display);
+  font-weight: 600; font-size: 0.78rem;
+  color: var(--md-default-fg-color); letter-spacing: -0.01em;
+}
+.md-nav--primary > .md-nav__list > .md-nav__item { margin-top: var(--bq-s4); }
+.md-nav__item .md-nav__item { border-left: 1px solid var(--bq-line); margin-left: 0.5rem; }
+
+/* The right "on this page" TOC is replaced by a floating button + popover
+   (javascripts/toc-fab.js). Keep the sidebar in the DOM (Material's scrollspy
+   still updates it, and the FAB mirrors its active link) but hide it. */
+.md-sidebar--secondary { display: none !important; }
+
+/* --------------------------------------------------------------------------
+   Callouts: left accent rule + faint tint (teal / saffron / red)
+   -------------------------------------------------------------------------- */
+.md-typeset .admonition,
+.md-typeset details {
+  border: none !important;
+  border-left: 2px solid var(--bq-accent) !important;
+  border-radius: 0 8px 8px 0;
+  box-shadow: none;
+  background-color: color-mix(in srgb, var(--bq-accent) 6%, transparent) !important;
+  padding: 0.1rem 1.1rem 0.6rem;
+  font-size: 0.78rem;
+  margin: var(--bq-s5) 0;
+}
+.md-typeset .admonition-title,
+.md-typeset summary {
+  background-color: transparent !important;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 600; font-size: 0.8rem;
+  color: var(--bq-accent);
+  padding: 0.6rem 0 0.15rem !important; margin: 0;
+}
+.md-typeset .admonition-title::before,
+.md-typeset summary::before { display: none !important; }
+.md-typeset details > summary::after { color: var(--bq-accent); }
+.md-typeset .admonition p,
+.md-typeset details p { color: var(--md-default-fg-color); }
+
+/* warning / caution → saffron */
+.md-typeset .admonition.warning, .md-typeset details.warning,
+.md-typeset .admonition.caution, .md-typeset details.caution,
+.md-typeset .admonition.attention, .md-typeset details.attention {
+  border-left-color: var(--saffron-500) !important;
+  background-color: color-mix(in srgb, var(--saffron-500) 7%, transparent) !important;
+}
+.md-typeset .warning > .admonition-title, .md-typeset .warning > summary,
+.md-typeset .caution > .admonition-title, .md-typeset .caution > summary,
+.md-typeset .attention > .admonition-title, .md-typeset .attention > summary { color: var(--saffron-500); }
+[data-md-color-scheme="slate"] .md-typeset .warning > .admonition-title,
+[data-md-color-scheme="slate"] .md-typeset .warning > summary,
+[data-md-color-scheme="slate"] .md-typeset .caution > .admonition-title,
+[data-md-color-scheme="slate"] .md-typeset .caution > summary,
+[data-md-color-scheme="slate"] .md-typeset .attention > .admonition-title,
+[data-md-color-scheme="slate"] .md-typeset .attention > summary { color: var(--saffron-400); }
+
+/* danger / failure / bug → red */
+.md-typeset .admonition.danger, .md-typeset details.danger,
+.md-typeset .admonition.failure, .md-typeset details.failure,
+.md-typeset .admonition.bug, .md-typeset details.bug {
+  border-left-color: #d04848 !important;
+  background-color: color-mix(in srgb, #d04848 7%, transparent) !important;
+}
+.md-typeset .danger > .admonition-title, .md-typeset .danger > summary,
+.md-typeset .failure > .admonition-title, .md-typeset .failure > summary,
+.md-typeset .bug > .admonition-title, .md-typeset .bug > summary { color: #c43838; }
+[data-md-color-scheme="slate"] .md-typeset .danger > .admonition-title,
+[data-md-color-scheme="slate"] .md-typeset .danger > summary,
+[data-md-color-scheme="slate"] .md-typeset .failure > .admonition-title,
+[data-md-color-scheme="slate"] .md-typeset .failure > summary,
+[data-md-color-scheme="slate"] .md-typeset .bug > .admonition-title,
+[data-md-color-scheme="slate"] .md-typeset .bug > summary { color: #e07474; }
+
+.md-typeset table:not([class]) th { /* re-assert after admonition block */ }
+
+/* --------------------------------------------------------------------------
+   Assignment: the one bold callout per chapter (the real-world challenge)
+   -------------------------------------------------------------------------- */
+.md-typeset .admonition.bq-assignment,
+.md-typeset details.bq-assignment {
+  border: 1px solid var(--bq-accent) !important;
+  border-left: 3px solid var(--bq-accent) !important;
+  border-radius: 14px;
+  background-color: var(--bq-assignment-bg) !important;
+  padding: 0.15rem 1.25rem 0.8rem 1.25rem;
+  box-shadow: var(--bq-shadow);
+}
+.md-typeset .bq-assignment > .admonition-title,
+.md-typeset .bq-assignment > summary {
+  font-family: var(--font-display); font-style: normal;
+  font-size: 0.9rem; font-weight: 700;
+  color: var(--bq-accent-hi);
+  padding: 0.75rem 0 0.3rem 1.75rem !important; position: relative;
+}
+.md-typeset .bq-assignment > .admonition-title::before,
+.md-typeset .bq-assignment > summary::before {
+  display: inline-block !important; content: ""; position: absolute;
+  left: 0; top: 0.7rem; width: 1.2rem; height: 1.2rem;
+  background-color: var(--bq-accent);
+  -webkit-mask-image: var(--bq-icon-target); mask-image: var(--bq-icon-target);
+  -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat;
+  -webkit-mask-size: contain; mask-size: contain;
+}
+[data-md-color-scheme="slate"] .md-typeset .bq-assignment > .admonition-title,
+[data-md-color-scheme="slate"] .md-typeset .bq-assignment > summary { color: var(--teal-200); }
+[data-md-color-scheme="slate"] .md-typeset .bq-assignment > .admonition-title::before,
+[data-md-color-scheme="slate"] .md-typeset .bq-assignment > summary::before { background-color: var(--teal-300); }
+.md-typeset .bq-assignment .task-list-control + * { font-weight: 500; }
+
+:root {
+  --bq-icon-target: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="black" d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2m0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8m0-14a6 6 0 1 0 6 6 6 6 0 0 0-6-6m0 10a4 4 0 1 1 4-4 4 4 0 0 1-4 4m0-6a2 2 0 1 0 2 2 2 2 0 0 0-2-2"/></svg>');
+}
+
+/* --------------------------------------------------------------------------
+   OS / content tabs (pymdownx.tabbed) → a card with underline tabs
+   -------------------------------------------------------------------------- */
+.md-typeset .tabbed-set {
+  background: var(--bq-surface);
+  border: 1px solid var(--bq-line);
+  border-radius: 14px;
+  overflow: hidden;
+  margin: var(--bq-s5) 0;
+}
+.md-typeset .tabbed-labels {
+  background: var(--bq-surface-2);
+  border-bottom: 1px solid var(--bq-line);
+  box-shadow: none;
+  padding: 0 0.4rem;
+}
+.md-typeset .tabbed-labels > label {
+  font-family: var(--bq-mono);
+  font-size: 0.66rem; letter-spacing: 0.04em; text-transform: uppercase;
+  color: var(--md-default-fg-color--light);
+  padding: 0.7rem 0.95rem;
+  transition: color 0.14s ease;
+}
+.md-typeset .tabbed-labels > label:hover { color: var(--md-default-fg-color); }
+.md-typeset .tabbed-set > input:checked + label { color: var(--bq-ink-strong); font-weight: 700; }
+.md-typeset .tabbed-labels--linked > label > a { color: inherit; }
+/* the moving underline uses Material's --md-accent var; point it at teal */
+.js .md-typeset .tabbed-labels::before { background: var(--bq-accent); height: 2px; }
+.md-typeset .tabbed-content { padding: 1rem 1.25rem; }
+.md-typeset .tabbed-content > :first-child { margin-top: 0; }
+.md-typeset .tabbed-content > :last-child { margin-bottom: 0; }
+.md-typeset .tabbed-block > .highlight:only-child { margin: 0; }
+
+/* --------------------------------------------------------------------------
+   The "Next" button (green accent CTA)
+   -------------------------------------------------------------------------- */
+.md-typeset .next-lesson {
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  margin-top: 0.6rem; padding: 0.6rem 1.2rem; border-radius: 999px;
+  background: var(--bq-accent); color: #fff !important; font-weight: 600;
+  border: none !important;
+  box-shadow: 0 6px 20px -8px rgba(15,171,149,0.55);
+  transition: transform 0.15s ease, background-color 0.15s ease, box-shadow 0.15s ease;
+}
+[data-md-color-scheme="slate"] .md-typeset .next-lesson { color: #051a16 !important; }
+.md-typeset .next-lesson:hover { background: var(--bq-accent-hi); transform: translateY(-1px); box-shadow: 0 10px 28px -8px rgba(15,171,149,0.6); }
+
+/* prev/next footer nav → cards with a teal hover edge */
+.md-footer__inner { gap: 1rem; }
+.md-footer__link {
+  border: 1px solid var(--bq-line);
+  border-radius: 12px;
+  padding: 1rem 1.2rem;
+  background: var(--bq-surface);
+  transition: border-color 0.16s ease, transform 0.16s ease;
+}
+.md-footer__link:hover { border-color: var(--bq-accent); transform: translateY(-1px); opacity: 1; }
+/* the cards sit on the page background now, so text must follow the theme ink
+   (Material defaults footer text to white for its old dark footer bar) */
+.md-footer__title {
+  font-family: var(--font-display);
+  font-weight: 600; font-size: 1rem; line-height: 1.3;
+  color: var(--bq-ink-strong);
+  margin: 0; padding: 0; min-height: 0;
+}
+.md-footer__direction {
+  position: static; opacity: 1;
+  font-family: var(--bq-mono); font-size: 0.6rem; letter-spacing: 0.06em;
+  text-transform: uppercase; color: var(--md-default-fg-color--lighter);
+  margin-bottom: 0.25rem;
+}
+.md-footer__button.md-icon { color: var(--md-default-fg-color--light); }
+.md-footer__inner { padding: 1.2rem 0; }
+/* Material hardcodes footer text to white; force theme ink on the cards.
+   (We target the elements directly because Material re-sets --md-footer-fg-color
+   at a precedence our scheme block does not win.) */
+.md-footer__link .md-footer__title,
+.md-footer__link .md-ellipsis { color: var(--bq-ink-strong); }
+.md-footer__link .md-footer__direction { color: var(--md-default-fg-color--lighter); }
+
+/* --------------------------------------------------------------------------
+   Search + footer chrome
+   -------------------------------------------------------------------------- */
+.md-search__form { border-radius: 999px; box-shadow: none; background-color: rgba(255,255,255,0.12); }
+[data-md-color-scheme="default"] .md-search__form { background-color: rgba(255,255,255,0.12); }
+.md-search__form:hover { background-color: rgba(255,255,255,0.2); }
+.md-search__input { font-size: 0.74rem; color: #ffffff; }
+.md-search__input::placeholder { color: rgba(255,255,255,0.6); }
+.md-header .md-search__icon { color: rgba(255,255,255,0.8); }
+.md-footer { box-shadow: none; }
+.md-footer-meta { display: none; }
+
+/* --------------------------------------------------------------------------
+   Text selection
+   -------------------------------------------------------------------------- */
+[data-md-color-scheme="default"] ::selection { background-color: var(--teal-700); color: #fff; }
+[data-md-color-scheme="default"] ::-moz-selection { background-color: var(--teal-700); color: #fff; }
+[data-md-color-scheme="slate"] ::selection { background-color: rgba(15,171,149,0.32); color: #fff; }
+[data-md-color-scheme="slate"] ::-moz-selection { background-color: rgba(15,171,149,0.32); color: #fff; }
+
+/* --------------------------------------------------------------------------
+   Glossary tooltips (abbr) and Urdu glosses
+   -------------------------------------------------------------------------- */
+.md-typeset abbr[title],
+.md-typeset abbr[data-tip] {
+  text-decoration: none;
+  border-bottom: 1px dashed var(--bq-accent);
+  cursor: help;
+  color: inherit;
+}
+.md-typeset abbr[data-tip] { position: relative; }
+.md-typeset abbr[data-tip]::after {
+  content: attr(data-tip); position: absolute; left: 50%; bottom: calc(100% + 9px);
+  transform: translateX(-50%) translateY(3px); z-index: 30; width: max-content; max-width: 250px;
+  white-space: normal; text-align: left; font-size: 0.68rem; font-style: normal; font-weight: 400; line-height: 1.5;
+  padding: 0.5rem 0.65rem; border-radius: 9px;
+  background: var(--md-default-fg-color); color: var(--md-default-bg-color);
+  box-shadow: var(--bq-shadow-lg);
+  opacity: 0; visibility: hidden; pointer-events: none; transition: opacity 0.13s ease, transform 0.13s ease;
+}
+.md-typeset abbr[data-tip]::before {
+  content: ""; position: absolute; left: 50%; bottom: calc(100% + 4px);
+  transform: translateX(-50%) translateY(3px); z-index: 30; border: 5px solid transparent;
+  border-top-color: var(--md-default-fg-color); opacity: 0; visibility: hidden; pointer-events: none;
+  transition: opacity 0.13s ease, transform 0.13s ease;
+}
+.md-typeset abbr[data-tip]:hover::after, .md-typeset abbr[data-tip]:hover::before,
+.md-typeset abbr[data-tip].bq-tip-open::after, .md-typeset abbr[data-tip].bq-tip-open::before {
+  opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0);
+}
+.md-typeset abbr.bq-tip-below::after { top: calc(100% + 9px); bottom: auto; }
+.md-typeset abbr.bq-tip-below::before { top: calc(100% + 4px); bottom: auto; border-top-color: transparent; border-bottom-color: var(--md-default-fg-color); }
+
+/* inline Urdu (Nastaliq) glosses, RTL and a touch larger */
+.md-typeset .ur, .md-typeset [lang="ur"] { font-family: "Noto Nastaliq Urdu", serif; direction: rtl; line-height: 2.2; font-size: 1.3em; }
+.md-typeset details.urdu > *:not(summary),
+.md-typeset .admonition.urdu > *:not(.admonition-title) { font-family: "Noto Nastaliq Urdu", serif; direction: rtl; line-height: 2.2; font-size: 0.92rem; }
+.md-typeset details.urdu > summary,
+.md-typeset .admonition.urdu > .admonition-title { font-family: "Noto Nastaliq Urdu", serif; font-style: normal; direction: rtl; line-height: 2.2; font-size: 0.86rem; }
+
+/* --------------------------------------------------------------------------
+   Inline diagrams in dark mode: remap the three fixed SVG tokens
+   (#ffffff panels, #1f1f1c ink, #6b6b65 secondary) to theme-aware values
+   -------------------------------------------------------------------------- */
+[data-md-color-scheme="slate"] .md-typeset figure svg [fill="#ffffff"] { fill: var(--bq-surface); }
+[data-md-color-scheme="slate"] .md-typeset figure svg [fill="#1f1f1c"] { fill: rgba(255,255,255,0.86); }
+[data-md-color-scheme="slate"] .md-typeset figure svg [stroke="#1f1f1c"] { stroke: rgba(255,255,255,0.55); }
+[data-md-color-scheme="slate"] .md-typeset figure svg [fill="#6b6b65"] { fill: rgba(255,255,255,0.6); }
+[data-md-color-scheme="slate"] .md-typeset figure svg [stroke="#6b6b65"] { stroke: rgba(255,255,255,0.4); }
+
+/* --------------------------------------------------------------------------
+   Roman Urdu toggle + inline helper text (javascripts/language-toggle.js)
+   -------------------------------------------------------------------------- */
+.ru-gloss { color: var(--md-default-fg-color--light); font-style: italic; }
+body:not(.bq-show-roman) .ru-gloss { display: none; }
+.md-header__inner .md-header__title { min-width: 0; }
+
+/* a label + sliding switch (track + knob), matching the design direction */
+.bq-roman-toggle {
+  flex-shrink: 0; display: inline-flex; align-items: center; gap: 0.5rem;
+  height: 1.85rem; margin: 0 0.2rem; padding: 0 0.3rem;
+  background: transparent; border: none; cursor: pointer;
+  font-size: 0.72rem; color: rgba(255,255,255,0.6); white-space: nowrap;
+  transition: color 0.15s ease;
+}
+.bq-roman-toggle:hover { color: rgba(255,255,255,0.9); }
+.bq-roman-label { line-height: 1; }
+.bq-roman-track {
+  position: relative; width: 38px; height: 22px; flex-shrink: 0;
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.28); border-radius: 999px;
+  transition: background 0.16s ease, border-color 0.16s ease;
+}
+.bq-roman-track::after {
+  content: ""; position: absolute; top: 2px; left: 2px;
+  width: 16px; height: 16px; border-radius: 50%;
+  background: rgba(255,255,255,0.7);
+  transition: transform 0.2s cubic-bezier(0.5, 1.8, 0.4, 0.85), background 0.16s ease;
+}
+.bq-roman-toggle.is-on { color: #ffffff; }
+.bq-roman-toggle.is-on .bq-roman-track { background: rgba(15,171,149,0.25); border-color: var(--teal-400); }
+.bq-roman-toggle.is-on .bq-roman-track::after { transform: translateX(16px); background: var(--teal-300); }
+
+@media screen and (max-width: 44.9em) {
+  .bq-roman-toggle .bq-roman-label { display: none; }
+  .bq-roman-toggle { gap: 0; }
+}
+
+/* --------------------------------------------------------------------------
+   Floating "On this page" button + popover (javascripts/toc-fab.js)
+   -------------------------------------------------------------------------- */
+.bq-toc-fab {
+  position: fixed; bottom: 1.5rem; right: 1.5rem; z-index: 30;
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  padding: 0.55rem 0.9rem; border-radius: 999px;
+  background: var(--bq-surface); border: 1px solid var(--bq-line-hi);
+  color: var(--md-default-fg-color); font-size: 0.7rem; cursor: pointer;
+  box-shadow: var(--bq-shadow-lg);
+  transition: opacity 0.24s ease, transform 0.24s ease, border-color 0.16s ease, color 0.16s ease;
+}
+.bq-toc-fab:hover { border-color: var(--bq-accent); color: var(--bq-accent); }
+.bq-toc-fab svg { width: 0.85rem; height: 0.85rem; }
+.bq-toc-fab__count { font-family: var(--bq-mono); font-size: 0.62rem; color: var(--md-default-fg-color--lighter); }
+.bq-toc-fab.bq-hidden { opacity: 0; pointer-events: none; transform: translateY(1rem); }
+
+.bq-toc-pop {
+  position: fixed; bottom: 4.2rem; right: 1.5rem; z-index: 31;
+  width: 17rem; max-height: 60vh; overflow-y: auto;
+  padding: 1rem 1.1rem;
+  background: var(--bq-surface); border: 1px solid var(--bq-line-hi);
+  border-radius: 14px; box-shadow: var(--bq-shadow-lg);
+  opacity: 0; pointer-events: none;
+  transform: translateY(0.5rem) scale(0.97); transform-origin: bottom right;
+  transition: opacity 0.18s ease, transform 0.18s ease;
+}
+.bq-toc-pop.open { opacity: 1; pointer-events: auto; transform: translateY(0) scale(1); }
+.bq-toc-pop__lbl {
+  font-family: var(--bq-mono); font-size: 0.58rem; font-weight: 600;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--md-default-fg-color--lighter); margin-bottom: 0.6rem;
+}
+.bq-toc-pop a {
+  display: block; padding: 0.32rem 0 0.32rem 0.7rem; margin-left: -0.1rem;
+  border-left: 2px solid transparent;
+  color: var(--md-default-fg-color--light); font-size: 0.72rem; line-height: 1.4;
+  border-bottom: none; transition: color 0.12s ease, border-color 0.12s ease;
+}
+.bq-toc-pop a:hover { color: var(--md-default-fg-color); }
+.bq-toc-pop a.active { color: var(--bq-accent); border-left-color: var(--bq-accent); font-weight: 600; }
+.bq-toc-pop::-webkit-scrollbar { width: 5px; }
+.bq-toc-pop::-webkit-scrollbar-thumb { background: var(--bq-scroll-thumb); border-radius: 999px; }
+
+/* on small screens the drawer holds the TOC, so the FAB is not needed */
+@media screen and (max-width: 76.24em) {
+  .bq-toc-fab, .bq-toc-pop { display: none !important; }
+}

@@ -1,0 +1,95 @@
+site_name: "Bano Qabil Sahiwal: Graphic Design with UI/UX"
+site_description: Free, self-paced, beginner-first graphic design and UI/UX course. English and Roman Urdu.
+site_url: https://courses.banoqabilsahiwal.org/design/
+docs_dir: docs
+copyright: Made in Sahiwal. Free forever.
+
+theme:
+  name: material
+  language: en
+  features:
+    - navigation.instant
+    - navigation.instant.progress
+    - navigation.tracking
+    - navigation.top
+    - navigation.footer
+    - navigation.indexes
+    - toc.follow
+    - content.code.copy
+    - content.code.annotate
+    - search.suggest
+    - search.highlight
+  icon:
+    logo: material/palette
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: white
+      accent: teal
+      toggle:
+        icon: material/brightness-4
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: black
+      accent: teal
+      toggle:
+        icon: material/brightness-7
+        name: Switch to light mode
+  font:
+    text: Inter
+    code: JetBrains Mono
+
+extra_css:
+  - stylesheets/brand.css
+
+extra_javascript:
+  - javascripts/nav.js
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - md_in_html
+  - abbr
+  - footnotes
+  - toc:
+      permalink: true
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.inlinehilite
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+
+# Chapters 4-6 (Illustrator, Affinity, Figma) are added when their content is ready.
+nav:
+  - Home: index.md
+  - "Getting Ready":
+      - chapter-0/index.md
+      - "0.1 Your Computer, Files & Cloud": chapter-0/0-1-computer-files-cloud.md
+      - "0.2 Word, Excel & Google for Designers": chapter-0/0-2-word-excel-google-designers.md
+      - "0.3 AI as a Design Brain": chapter-0/0-3-ai-as-design-brain.md
+      - "0.4 Learning to Learn": chapter-0/0-4-learning-to-learn-design.md
+  - "Design Fundamentals":
+      - chapter-1/index.md
+      - "1.1 Communication & Hierarchy": chapter-1/1-1-communication-hierarchy.md
+      - "1.2 Color Theory": chapter-1/1-2-color-theory.md
+      - "1.3 Typography": chapter-1/1-3-typography.md
+      - "1.4 Layout, Composition & Grids": chapter-1/1-4-layout-composition-grids.md
+  - "Canva":
+      - chapter-2/index.md
+      - "2.1 Canva Tour": chapter-2/2-1-canva-tour.md
+      - "2.2 Social Media Graphics": chapter-2/2-2-social-media-graphics.md
+      - "2.3 Posters, Flyers & CVs": chapter-2/2-3-posters-flyers-cvs.md
+      - "2.4 Canva Docs & Presentations": chapter-2/2-4-canva-docs-presentations.md
+  - "Photoshop":
+      - chapter-3/index.md
+      - "3.1 Raster & Photoshop Tour": chapter-3/3-1-raster-photoshop-tour.md
+      - "3.2 Layers, Masks & Selections": chapter-3/3-2-layers-masks-selections.md
+      - "3.3 Retouching": chapter-3/3-3-retouching.md
+      - "3.4 Effects & Compositing": chapter-3/3-4-effects-compositing.md
+  - Glossary: glossary.md

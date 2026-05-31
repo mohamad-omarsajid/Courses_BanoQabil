@@ -1,0 +1,184 @@
+@import "tailwindcss";
+
+/* ==========================================================
+   Dark mode is driven by data-theme on <html>, set before
+   paint by the inline script in index.html.
+========================================================== */
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+/* ==========================================================
+   RAW TOKENS  (single source of truth, ported from the
+   Bano Qabil design system, minus the Dynalight script face)
+========================================================== */
+:root {
+  color-scheme: light;
+
+  /* Teal ramp, the brand */
+  --t-50:#ecfdf8;  --t-100:#cdf8ec; --t-200:#9ef0db; --t-300:#66e0c6;
+  --t-400:#2fc9ab; --t-500:#0fab95; --t-600:#0a8a78; --t-700:#0a6f62;
+  --t-800:#0c584e; --t-900:#0e4842; --t-950:#042721;
+
+  /* Coral, celebration only */
+  --c-100:#ffe3d6; --c-200:#ffc7ad; --c-300:#ffa987; --c-400:#ff8d65;
+  --c-500:#ff6f3f; --c-600:#e15321; --c-700:#b13d14;
+
+  /* Warm neutrals */
+  --n-0:#ffffff;   --n-25:#fafaf7;  --n-50:#f5f4ef;  --n-100:#ecebe4;
+  --n-200:#ddddd4; --n-300:#c1c1b6; --n-400:#94948a; --n-500:#6c6c64;
+  --n-600:#4d4d47; --n-700:#34342f; --n-800:#22221f; --n-900:#131311;
+
+  /* Semantic, light */
+  --bg:var(--n-25);     --bg-soft:var(--n-50);
+  --surface:var(--n-0); --surface-2:var(--n-50);
+  --line:rgba(19,19,17,0.08); --line-2:rgba(19,19,17,0.14);
+  --fg:var(--n-900); --fg-2:var(--n-700); --fg-mute:var(--n-500); --fg-soft:var(--n-400);
+
+  --primary:var(--t-500); --primary-h:var(--t-600); --primary-d:var(--t-700); --primary-on:#ffffff;
+  --accent:var(--c-500);  --accent-h:var(--c-600);
+  --danger:#d64545; --warning:#d49a1a; --success:var(--t-500); --info:#3b82c4;
+
+  /* Shadows, light */
+  --sh-1:0 1px 2px rgba(19,19,17,0.06);
+  --sh-2:0 2px 6px rgba(19,19,17,0.06), 0 1px 2px rgba(19,19,17,0.04);
+  --sh-3:0 10px 24px -10px rgba(19,19,17,0.16), 0 2px 6px rgba(19,19,17,0.04);
+  --sh-4:0 30px 60px -30px rgba(14,72,66,0.30), 0 8px 18px -12px rgba(19,19,17,0.10);
+
+  --ease-brand:cubic-bezier(.2,.7,.2,1);
+}
+
+[data-theme="dark"] {
+  color-scheme: dark;
+  --bg:#0b0c0e; --bg-soft:#111316; --surface:#15171a; --surface-2:#1c1f23;
+  --line:rgba(255,255,255,0.08); --line-2:rgba(255,255,255,0.16);
+  --fg:#f4f3ee; --fg-2:#d4d3cd; --fg-mute:#8e8e88; --fg-soft:#5e5e58;
+  --primary:#38d3bf; --primary-h:#5fd9c5; --primary-d:#2fc9ab; --primary-on:#062623;
+  --sh-1:0 1px 2px rgba(0,0,0,0.5);
+  --sh-2:0 2px 6px rgba(0,0,0,0.5);
+  --sh-3:0 10px 24px -10px rgba(0,0,0,0.6);
+  --sh-4:0 30px 60px -30px rgba(0,0,0,0.8);
+}
+
+/* ==========================================================
+   STATIC THEME (emitted as utilities)
+========================================================== */
+@theme {
+  --font-display:"Sora", system-ui, sans-serif;
+  --font-body:"Inter", system-ui, sans-serif;
+  --font-mono:"JetBrains Mono", ui-monospace, Menlo, monospace;
+
+  --radius-sm:6px;  --radius-md:10px; --radius-lg:14px;
+  --radius-xl:20px; --radius-2xl:28px; --radius-3xl:40px;
+}
+
+/* ==========================================================
+   COLOR THEME (inline, so utilities track the live vars and
+   flip automatically in dark mode)
+========================================================== */
+@theme inline {
+  --color-teal-50:var(--t-50);   --color-teal-100:var(--t-100); --color-teal-200:var(--t-200);
+  --color-teal-300:var(--t-300); --color-teal-400:var(--t-400); --color-teal-500:var(--t-500);
+  --color-teal-600:var(--t-600); --color-teal-700:var(--t-700); --color-teal-800:var(--t-800);
+  --color-teal-900:var(--t-900); --color-teal-950:var(--t-950);
+
+  --color-coral-100:var(--c-100); --color-coral-200:var(--c-200); --color-coral-300:var(--c-300);
+  --color-coral-400:var(--c-400); --color-coral-500:var(--c-500); --color-coral-600:var(--c-600);
+  --color-coral-700:var(--c-700);
+
+  --color-sand-0:var(--n-0);     --color-sand-25:var(--n-25);   --color-sand-50:var(--n-50);
+  --color-sand-100:var(--n-100); --color-sand-200:var(--n-200); --color-sand-300:var(--n-300);
+  --color-sand-400:var(--n-400); --color-sand-500:var(--n-500); --color-sand-600:var(--n-600);
+  --color-sand-700:var(--n-700); --color-sand-800:var(--n-800); --color-sand-900:var(--n-900);
+
+  --color-bg:var(--bg);             --color-bg-soft:var(--bg-soft);
+  --color-surface:var(--surface);   --color-surface-2:var(--surface-2);
+  --color-line:var(--line);         --color-line-2:var(--line-2);
+  --color-fg:var(--fg);             --color-fg-2:var(--fg-2);
+  --color-fg-muted:var(--fg-mute);  --color-fg-soft:var(--fg-soft);
+
+  --color-primary:var(--primary);          --color-primary-hover:var(--primary-h);
+  --color-primary-deep:var(--primary-d);   --color-primary-on:var(--primary-on);
+  --color-accent:var(--accent);            --color-accent-hover:var(--accent-h);
+  --color-danger:var(--danger);            --color-warning:var(--warning);
+  --color-success:var(--success);          --color-info:var(--info);
+
+  --shadow-1:var(--sh-1); --shadow-2:var(--sh-2); --shadow-3:var(--sh-3); --shadow-4:var(--sh-4);
+}
+
+/* ==========================================================
+   BASE
+========================================================== */
+@layer base {
+  html {
+    /* Lenis owns smooth scroll, so keep native behaviour instant. */
+    scroll-behavior: auto;
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: var(--font-body);
+    font-feature-settings: "ss01", "cv11";
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    transition: background .3s var(--ease-brand), color .3s var(--ease-brand);
+    overflow-x: hidden;
+  }
+
+  ::selection { background: color-mix(in oklab, var(--primary) 24%, transparent); }
+
+  :focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  /* Roman Urdu uses Latin glyphs, so the body font is fine. */
+}
+
+/* Lenis recommended setup */
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+.lenis.lenis-stopped { overflow: clip; }
+
+/* ==========================================================
+   LANGUAGE  (EN / Roman Urdu), CSS-paired spans
+========================================================== */
+:root .t-ru { display: none; }
+[data-lang="ru"] .t-en { display: none; }
+[data-lang="ru"] .t-ru { display: revert; }
+
+/* ==========================================================
+   PRELOADER: keep the page from scrolling until ready
+========================================================== */
+html.is-loading, html.is-loading body { overflow: hidden; height: 100%; }
+
+/* Hide content until GSAP reveals it, but only when JS + motion are on */
+@media (prefers-reduced-motion: no-preference) {
+  html.js [data-anim="hide"] { opacity: 0; }
+}
+
+/* Ambient float for decorative chips */
+@keyframes floaty { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-7px); } }
+@media (prefers-reduced-motion: no-preference) {
+  [data-float] { animation: floaty 6s var(--ease-brand) infinite; }
+}
+
+/* Marquee */
+@keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+.marquee-track { animation: marquee 28s linear infinite; }
+@media (prefers-reduced-motion: reduce) { .marquee-track { animation: none; } }
+
+/* Shiny text sweep (React Bits style) */
+@keyframes shine { to { background-position: -220% 0; } }
+@keyframes spin { to { transform: rotate(360deg); } }
+.shiny-text { animation: shine 4.5s linear infinite; }
+.shimmer-ring { animation: spin 3.5s linear infinite; }
+@media (prefers-reduced-motion: reduce) {
+  .shiny-text, .shimmer-ring { animation: none; }
+}
+
+/* Utility: thin scrollbar inside code blocks */
+.scroll-thin::-webkit-scrollbar { height: 6px; width: 6px; }
+.scroll-thin::-webkit-scrollbar-thumb { background: var(--line-2); border-radius: 999px; }

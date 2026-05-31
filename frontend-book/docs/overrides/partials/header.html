@@ -1,0 +1,61 @@
+{#-
+  Custom Bano Qabil header, modelled on NEW_DESIGN_DIRECTION.html:
+  star + brand name (Fraunces), a breadcrumb, a search pill, the Roman Urdu
+  switch (injected by language-toggle.js), and the theme toggle.
+  Search and palette toggle are reused from Material so behaviour is intact.
+-#}
+{% set class = "md-header md-header--shadow" %}
+<header class="{{ class }}" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="{{ lang.t('header') }}">
+
+    {#- brand: star + name, links home -#}
+    <a href="{{ config.extra.homepage | d(nav.homepage.url, true) | url }}"
+       title="{{ config.site_name | e }}"
+       class="md-header__button md-logo bq-brand"
+       aria-label="{{ config.site_name }}" data-md-component="logo">
+      <span class="bq-brand__logo" aria-hidden="true"></span>
+      <span class="bq-brand__name">Bano Qabil</span>
+    </a>
+
+    {#- mobile drawer toggle -#}
+    <label class="md-header__button md-icon" for="__drawer">
+      {% set icon = config.theme.icon.menu or "material/menu" %}
+      {% include ".icons/" ~ icon ~ ".svg" %}
+    </label>
+
+    {#- breadcrumb: course / current chapter. The chapter is filled server-side
+        for first paint and kept fresh across instant navigation by JS. -#}
+    <div class="bq-crumb">
+      <span class="bq-crumb__course">Front-End Development</span>
+      <span class="bq-crumb__sep">/</span>
+      <b class="bq-crumb__chapter md-ellipsis">{% if page and page.parent and page.parent.title %}{{ page.parent.title }}{% elif page and page.title and not page.is_homepage %}{{ page.title }}{% endif %}</b>
+    </div>
+
+    <div class="bq-top-spacer"></div>
+
+    {#- search (Material): real search box, restyled into a compact pill -#}
+    {% if "material/search" in config.plugins %}
+      {% set search = config.plugins["material/search"] | attr("config") %}
+      {% if search.enabled %}
+        <label class="md-header__button md-icon" for="__search">
+          {% set icon = config.theme.icon.search or "material/magnify" %}
+          {% include ".icons/" ~ icon ~ ".svg" %}
+        </label>
+        {% include "partials/search.html" %}
+      {% endif %}
+    {% endif %}
+
+    {#- Roman Urdu switch is injected here by language-toggle.js -#}
+
+    {#- theme toggle (Material palette) -#}
+    {% if config.theme.palette %}
+      {% if not config.theme.palette is mapping %}
+        {% include "partials/palette.html" %}
+      {% endif %}
+    {% endif %}
+    {% if not config.theme.palette is mapping %}
+      {% include "partials/javascripts/palette.html" %}
+    {% endif %}
+
+  </nav>
+</header>

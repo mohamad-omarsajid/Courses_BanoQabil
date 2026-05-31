@@ -1,0 +1,5826 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Free, self-paced, beginner-first front-end web development course. English and Roman Urdu.">
+      
+      
+      
+        <link rel="canonical" href="https://courses.banoqabilsahiwal.org/frontend/chapter-05-tailwind-and-figma/5-3-reading-figma/">
+      
+      
+        <link rel="prev" href="../5-2-building-real-components/">
+      
+      
+        <link rel="next" href="../5-4-figma-to-website-workflow/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>5.3 Reading Figma like a developer - Bano Qabil Courses</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Inter";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/brand.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/exercises.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="teal">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#53-reading-figma-like-a-developer" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Bano Qabil Courses" class="md-header__button md-logo" aria-label="Bano Qabil Courses" data-md-component="logo">
+      
+  <img src="../../assets/img/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Bano Qabil Courses
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              5.3 Reading Figma like a developer
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="teal"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="teal"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+  <nav class="bq-course-bar" aria-label="Courses">
+    <div class="bq-course-bar__inner md-grid">
+      <span class="bq-course-bar__label">Courses</span>
+      <a class="bq-course is-active" href="../..">Front End Development</a>
+      <span class="bq-course is-soon">Graphic Design <em>soon</em></span>
+      <a class="bq-course-bar__home" href="https://courses.banoqabilsahiwal.org/courses/frontend" title="Go to the course home page">Course home &nearr;</a>
+    </div>
+  </nav>
+
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Bano Qabil Courses" class="md-nav__button md-logo" aria-label="Bano Qabil Courses" data-md-component="logo">
+      
+  <img src="../../assets/img/logo.png" alt="logo">
+
+    </a>
+    Bano Qabil Courses
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../chapter-00-getting-ready/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting Ready
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Getting Ready
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chapter-00-getting-ready/0-1-computer-and-internet/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    0.1 Your computer and the internet
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chapter-00-getting-ready/0-2-word-excel-google/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    0.2 Word, Excel, and Google for developers
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chapter-00-getting-ready/0-2-1-cv-assignment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    0.2.1 Assignment: Build your CV
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chapter-00-getting-ready/0-2-2-excel-academy-system/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    0.2.2 Assignment: Excel academy system
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chapter-00-getting-ready/0-3-using-ai-to-learn/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    0.3 Using AI to learn
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chapter-00-getting-ready/0-4-learning-to-learn/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    0.4 Learning to learn
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../chapter-01-orientation/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Orientation and setup
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Orientation and setup
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chapter-01-orientation/1-1-what-is-frontend/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.1 What is frontend development?
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chapter-01-orientation/1-2-install-everything/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.2 Install everything
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chapter-01-orientation/1-3-the-terminal/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.3 The terminal
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chapter-01-orientation/1-4-devtools/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.4 Browser DevTools
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../chapter-02-html/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    HTML
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    HTML
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chapter-02-html/2-1-foundations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.1 HTML, CSS, and JavaScript
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chapter-02-html/2-2-your-first-html-page/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.2 Your first HTML page
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chapter-02-html/2-3-text-lists-links-images/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.3 Text, lists, links, and images
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chapter-02-html/2-4-forms-and-inputs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.4 Forms and inputs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chapter-02-html/2-5-semantic-and-accessibility/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.5 Semantic HTML and accessibility
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../chapter-03-css/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CSS foundations
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    CSS foundations
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chapter-03-css/3-1-selectors-box-model/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.1 Selectors, the box model, colours and fonts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chapter-03-css/3-2-flexbox/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.2 Flexbox
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chapter-03-css/3-3-css-grid/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.3 CSS Grid
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chapter-03-css/3-4-responsive-design/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.4 Responsive design
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../chapter-04-design-ux-foundations/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Design and UX Foundations
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Design and UX Foundations
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chapter-04-design-ux-foundations/4-1-design-is-for-people/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.1 Design is for people, not decoration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chapter-04-design-ux-foundations/4-2-how-people-use-screens/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.2 How people really use screens
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chapter-04-design-ux-foundations/4-3-information-architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.3 Information architecture and user flows
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chapter-04-design-ux-foundations/4-4-accessibility/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.4 Accessibility from day one
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chapter-04-design-ux-foundations/4-5-visual-hierarchy-and-polish/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.5 Visual hierarchy, then polish
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tailwind CSS and Figma
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_7" id="__nav_7_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Tailwind CSS and Figma
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5-1-tailwind-utility-first/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.1 Tailwind utility-first
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5-2-building-real-components/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.2 Building real components with Tailwind
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.3 Reading Figma like a developer
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.3 Reading Figma like a developer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#what-youll-know-by-the-end" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What you'll know by the end
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#getting-figma-browser-desktop-app-and-the-font-installer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Getting Figma: browser, desktop app, and the font installer
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#signing-up-for-a-free-account" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Signing up for a free account
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#a-full-tour-of-the-figma-interface" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A full tour of the Figma interface
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="A full tour of the Figma interface">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-toolbar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The toolbar
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-layers-panel-left" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The layers panel (left)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-canvas-centre" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The canvas (centre)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-properties-panel-right" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The properties panel (right)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#frames-and-components" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Frames and components
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chapter-4-ideas-inside-figma-designing-with-hierarchy-contrast-and-spacing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Chapter 4 ideas inside Figma: designing with hierarchy, contrast, and spacing
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Chapter 4 ideas inside Figma: designing with hierarchy, contrast, and spacing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#visual-hierarchy-in-the-layers-panel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Visual hierarchy in the layers panel
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#contrast-reading-it-from-the-properties-panel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Contrast: reading it from the properties panel
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spacing-and-a-type-scale-the-layout-section" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Spacing and a type scale: the layout section
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#auto-layout-figmas-version-of-flexbox" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Auto-layout: Figma's version of flexbox
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reading-values-in-dev-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Reading values in Dev Mode
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#setting-up-hierarchy-contrast-and-type-scale-in-your-own-design" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Setting up hierarchy, contrast, and type scale in your own design
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#from-figma-css-to-tailwind" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        From Figma CSS to Tailwind
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exporting-an-asset" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exporting an asset
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Exporting an asset">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#try-this" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Try this
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#knowledge-check" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Knowledge check
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#whats-next" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What's next
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#going-deeper-optional" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Going deeper (optional)
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5-4-figma-to-website-workflow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.4 Figma to website workflow
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../chapter-06-git-and-github/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Git and GitHub
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_8" id="__nav_8_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Git and GitHub
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chapter-06-git-and-github/6-1-version-control/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6.1 What is version control?
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chapter-06-git-and-github/6-2-github/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6.2 GitHub
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chapter-06-git-and-github/6-3-branches-and-merging/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6.3 Branches and merging
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chapter-06-git-and-github/6-4-pull-requests-pages-etiquette/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6.4 Pull requests, Pages, and etiquette
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_9" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../chapter-07-javascript-fundamentals/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    JavaScript fundamentals
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_9" id="__nav_9_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    JavaScript fundamentals
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chapter-07-javascript-fundamentals/7-1-variables-types-operators/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7.1 Variables, types, and operators
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chapter-07-javascript-fundamentals/7-2-conditionals-and-loops/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7.2 Conditionals and loops
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chapter-07-javascript-fundamentals/7-3-functions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7.3 Functions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chapter-07-javascript-fundamentals/7-4-higher-order-and-errors/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7.4 Higher-order functions and error handling
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_10" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../chapter-08-javascript-in-depth/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    JavaScript in depth
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_10" id="__nav_10_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    JavaScript in depth
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chapter-08-javascript-in-depth/8-1-arrays-objects-methods/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.1 Arrays, objects, and modern methods
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chapter-08-javascript-in-depth/8-2-es2015-essentials/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.2 ES2015+ essentials
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chapter-08-javascript-in-depth/8-3-the-dom/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.3 The DOM
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chapter-08-javascript-in-depth/8-4-events-and-forms/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.4 Events and forms
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_11" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../chapter-09-deploy-your-first-site/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deploy your first site
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_11" id="__nav_11_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_11">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Deploy your first site
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chapter-09-deploy-your-first-site/9-1-what-deployment-means/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9.1 What deployment really means
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chapter-09-deploy-your-first-site/9-2-vercel-deep/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9.2 Vercel, the modern way
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chapter-09-deploy-your-first-site/9-3-infinityfree-and-cpanel/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9.3 InfinityFree and cPanel
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chapter-09-deploy-your-first-site/9-4-netlify-pages-hostinger-and-choosing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9.4 Choosing your host
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_12" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../chapter-10-react-foundations/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    React foundations
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_12" id="__nav_12_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_12_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_12">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    React foundations
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chapter-10-react-foundations/10-1-why-react-vite-jsx/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10.1 Why React, Vite, and JSX
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chapter-10-react-foundations/10-2-components-and-props/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10.2 Components and props
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chapter-10-react-foundations/10-3-state-and-events/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10.3 State and events
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chapter-10-react-foundations/10-4-conditional-rendering-lifting-state/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10.4 Conditional rendering and lifting state up
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_13" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../chapter-11-react-in-practice/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    React in practice
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_13" id="__nav_13_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_13_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_13">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    React in practice
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chapter-11-react-in-practice/11-1-useeffect/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11.1 useEffect and the lifecycle
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chapter-11-react-in-practice/11-2-fetching-data/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11.2 Fetching data
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chapter-11-react-in-practice/11-3-forms-in-react/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11.3 Forms in React
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chapter-11-react-in-practice/11-4-alkhidmat-donation-app/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11.4 Project: the donation mini-app
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_14" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../chapter-12-animation-gsap/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Animation, GSAP and smooth scroll
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_14" id="__nav_14_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_14_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_14">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Animation, GSAP and smooth scroll
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chapter-12-animation-gsap/12-1-gsap-basics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12.1 GSAP basics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chapter-12-animation-gsap/12-2-scrolltrigger/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12.2 ScrollTrigger
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chapter-12-animation-gsap/12-3-gsap-in-react/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12.3 GSAP inside React
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chapter-12-animation-gsap/12-4-lenis-and-locomotive/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12.4 Smooth scroll with Lenis
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_15" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../chapter-13-ecommerce-capstone/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    The ecommerce capstone
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_15" id="__nav_15_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_15_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_15">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    The ecommerce capstone
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chapter-13-ecommerce-capstone/13-1-planning-and-scaffolding/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13.1 Planning and scaffolding
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chapter-13-ecommerce-capstone/13-2-home-and-shop/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13.2 Home and shop pages
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chapter-13-ecommerce-capstone/13-3-detail-cart-checkout/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13.3 Product detail, cart, and checkout
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chapter-13-ecommerce-capstone/13-4-polish-deploy-readme/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13.4 Polish, deploy, and a great README
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_16" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../chapter-14-modern-react-patterns/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Modern React patterns
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_16" id="__nav_16_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_16_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_16">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Modern React patterns
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chapter-14-modern-react-patterns/14-1-useref-usememo-usecallback/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    14.1 useRef, useMemo, useCallback
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chapter-14-modern-react-patterns/14-2-custom-hooks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    14.2 Custom hooks
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chapter-14-modern-react-patterns/14-3-context-in-depth/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    14.3 Context API in depth
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chapter-14-modern-react-patterns/14-4-react-router/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    14.4 React Router
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_17" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../chapter-15-nextjs/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Next.js
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_17" id="__nav_17_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_17_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_17">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Next.js
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chapter-15-nextjs/15-1-why-nextjs-app-router/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    15.1 Why Next.js and the App Router
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chapter-15-nextjs/15-2-server-vs-client-components/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    15.2 Server and client components
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chapter-15-nextjs/15-3-data-fetching-server-actions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    15.3 Data fetching and server actions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chapter-15-nextjs/15-4-deploy-seo-images/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    15.4 Deploy, SEO, and images
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_18" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../chapter-16-more-animation/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    More animation: Framer, Anime, beyond
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_18" id="__nav_18_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_18_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_18">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    More animation: Framer, Anime, beyond
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chapter-16-more-animation/16-1-framer-motion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    16.1 Framer Motion
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chapter-16-more-animation/16-2-anime-js/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    16.2 Anime.js
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chapter-16-more-animation/16-3-lenis-deep/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    16.3 Lenis deep dive
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chapter-16-more-animation/16-4-choosing-the-right-tool/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    16.4 Choosing the right tool
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_19" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../chapter-17-three-js-and-r3f/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3D on the web with Three.js
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_19" id="__nav_19_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_19_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_19">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    3D on the web with Three.js
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chapter-17-three-js-and-r3f/17-1-scene-camera-renderer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    17.1 Scene, camera, renderer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chapter-17-three-js-and-r3f/17-2-geometry-materials-lighting/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    17.2 Geometry, materials, lighting
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chapter-17-three-js-and-r3f/17-3-loading-models/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    17.3 Loading models
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chapter-17-three-js-and-r3f/17-4-r3f-and-drei/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    17.4 React Three Fiber and Drei
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_20" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../chapter-18-typescript-and-tooling/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TypeScript and component libraries
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_20" id="__nav_20_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_20_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_20">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    TypeScript and component libraries
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chapter-18-typescript-and-tooling/18-1-typescript-gentle/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    18.1 TypeScript for React
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chapter-18-typescript-and-tooling/18-2-shadcn-radix-headless/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    18.2 shadcn/ui, Radix, Headless UI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chapter-18-typescript-and-tooling/18-3-testing-vitest-rtl/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    18.3 Testing with Vitest
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chapter-18-typescript-and-tooling/18-4-complete-project-setup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    18.4 The complete project setup
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_21" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../chapter-19-state-data-and-production/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    State, data, and going to production
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_21" id="__nav_21_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_21_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_21">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    State, data, and going to production
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chapter-19-state-data-and-production/19-1-zustand/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    19.1 Zustand for state
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chapter-19-state-data-and-production/19-2-tanstack-query/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    19.2 TanStack Query for server state
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chapter-19-state-data-and-production/19-3-performance/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    19.3 Performance and Core Web Vitals
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chapter-19-state-data-and-production/19-4-production-hygiene/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    19.4 Production hygiene
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_22" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../chapter-20-career-and-portfolio/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Career and portfolio capstone
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_22" id="__nav_22_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_22_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_22">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Career and portfolio capstone
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chapter-20-career-and-portfolio/20-1-planning-a-portfolio/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    20.1 Planning a portfolio that gets you hired
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chapter-20-career-and-portfolio/20-2-build-your-portfolio/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    20.2 Build your portfolio
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chapter-20-career-and-portfolio/20-3-polish-readme-loom/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    20.3 Polish and the README that wins interviews
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chapter-20-career-and-portfolio/20-4-first-clients-freelancing-halal-income/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    20.4 First clients and freelancing in Pakistan
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../glossary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Glossary
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#what-youll-know-by-the-end" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What you'll know by the end
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#getting-figma-browser-desktop-app-and-the-font-installer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Getting Figma: browser, desktop app, and the font installer
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#signing-up-for-a-free-account" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Signing up for a free account
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#a-full-tour-of-the-figma-interface" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A full tour of the Figma interface
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="A full tour of the Figma interface">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-toolbar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The toolbar
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-layers-panel-left" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The layers panel (left)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-canvas-centre" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The canvas (centre)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-properties-panel-right" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The properties panel (right)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#frames-and-components" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Frames and components
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chapter-4-ideas-inside-figma-designing-with-hierarchy-contrast-and-spacing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Chapter 4 ideas inside Figma: designing with hierarchy, contrast, and spacing
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Chapter 4 ideas inside Figma: designing with hierarchy, contrast, and spacing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#visual-hierarchy-in-the-layers-panel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Visual hierarchy in the layers panel
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#contrast-reading-it-from-the-properties-panel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Contrast: reading it from the properties panel
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spacing-and-a-type-scale-the-layout-section" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Spacing and a type scale: the layout section
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#auto-layout-figmas-version-of-flexbox" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Auto-layout: Figma's version of flexbox
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reading-values-in-dev-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Reading values in Dev Mode
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#setting-up-hierarchy-contrast-and-type-scale-in-your-own-design" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Setting up hierarchy, contrast, and type scale in your own design
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#from-figma-css-to-tailwind" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        From Figma CSS to Tailwind
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exporting-an-asset" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exporting an asset
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Exporting an asset">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#try-this" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Try this
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#knowledge-check" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Knowledge check
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#whats-next" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What's next
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#going-deeper-optional" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Going deeper (optional)
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="53-reading-figma-like-a-developer">5.3 Reading <abbr title="A free design tool where designers draw the look of a website, available in the browser and as a desktop app. (Roman Urdu: ek free design tool jahan website ka design banta hai)">Figma</abbr> like a developer<a class="headerlink" href="#53-reading-figma-like-a-developer" title="Permanent link">&para;</a></h1>
+<p>A designer hands you a picture of a website. Your job is to turn that picture into real code. The tool that holds this picture is called <abbr title="A free design tool where designers draw the look of a website, available in the browser and as a desktop app. (Roman Urdu: ek free design tool jahan website ka design banta hai)">Figma</abbr>. In this lesson you learn what <abbr title="A free design tool where designers draw the look of a website, available in the browser and as a desktop app. (Roman Urdu: ek free design tool jahan website ka design banta hai)">Figma</abbr> is, how to install it, how to navigate it, how to apply the visual-hierarchy ideas from Chapter 4 inside <abbr title="A free design tool where designers draw the look of a website, available in the browser and as a desktop app. (Roman Urdu: ek free design tool jahan website ka design banta hai)">Figma</abbr>, and how to pull exact values out of a design and map them to Tailwind classes.</p>
+<h2 id="what-youll-know-by-the-end">What you'll know by the end<a class="headerlink" href="#what-youll-know-by-the-end" title="Permanent link">&para;</a></h2>
+<ul>
+<li>What <abbr title="A free design tool where designers draw the look of a website, available in the browser and as a desktop app. (Roman Urdu: ek free design tool jahan website ka design banta hai)">Figma</abbr> is and the difference between the browser version and the desktop app</li>
+<li>Why the desktop app needs a separate font installer, and where to download both</li>
+<li>How to find your way around the full <abbr title="A free design tool where designers draw the look of a website, available in the browser and as a desktop app. (Roman Urdu: ek free design tool jahan website ka design banta hai)">Figma</abbr> interface: layers panel, canvas, and properties panel</li>
+<li>How the Chapter 4 ideas (visual hierarchy, contrast, spacing, type scale) live inside <abbr title="A free design tool where designers draw the look of a website, available in the browser and as a desktop app. (Roman Urdu: ek free design tool jahan website ka design banta hai)">Figma</abbr></li>
+<li>What <abbr title="A Figma feature that arranges children automatically, equivalent to CSS flexbox. (Roman Urdu: Figma ka flex jaisa feature jo elements ko automatically lagata hai)">auto-layout</abbr> is and why it is the <abbr title="A free design tool where designers draw the look of a website, available in the browser and as a desktop app. (Roman Urdu: ek free design tool jahan website ka design banta hai)">Figma</abbr> version of CSS flexbox</li>
+<li>How to read colours, fonts, sizes, and spacing in <abbr title="A Figma view that shows exact CSS values and code snippets for developers. (Roman Urdu: Figma ka woh hissa jo developer ke liye values aur CSS dikhata hai)">Dev Mode</abbr></li>
+<li>How to <abbr title="Saving an icon or image from Figma as a file on your computer. (Roman Urdu: icon ya image ko file ke taur par save karna)">export</abbr> an icon or a photo from a design</li>
+<li>How to map <abbr title="A free design tool where designers draw the look of a website, available in the browser and as a desktop app. (Roman Urdu: ek free design tool jahan website ka design banta hai)">Figma</abbr> CSS values to Tailwind classes</li>
+</ul>
+<hr />
+<h2 id="getting-figma-browser-desktop-app-and-the-font-installer">Getting <abbr title="A free design tool where designers draw the look of a website, available in the browser and as a desktop app. (Roman Urdu: ek free design tool jahan website ka design banta hai)">Figma</abbr>: browser, desktop app, and the font installer<a class="headerlink" href="#getting-figma-browser-desktop-app-and-the-font-installer" title="Permanent link">&para;</a></h2>
+<p><abbr title="A free design tool where designers draw the look of a website, available in the browser and as a desktop app. (Roman Urdu: ek free design tool jahan website ka design banta hai)">Figma</abbr> runs inside your web browser at figma.com, so you can open a design file right now without installing anything. The browser version is fine for reading designs and for quick work.</p>
+<p>If you will use <abbr title="A free design tool where designers draw the look of a website, available in the browser and as a desktop app. (Roman Urdu: ek free design tool jahan website ka design banta hai)">Figma</abbr> regularly, the desktop app is better. It stays open as a separate window, loads faster, and does not compete with your browser tabs for memory. There is one important thing to know: the desktop app can use fonts installed on your computer, but only if you also install a small companion called the <strong><abbr title="A free design tool where designers draw the look of a website, available in the browser and as a desktop app. (Roman Urdu: ek free design tool jahan website ka design banta hai)">Figma</abbr> <abbr title="A companion program from Figma that lets the app see fonts installed on your computer. (Roman Urdu: ek program jo Figma ko aapke computer ke fonts dikhata hai)">Font Helper</abbr></strong> (Roman Urdu: ek alag program jo aapke computer ke fonts ko <abbr title="A free design tool where designers draw the look of a website, available in the browser and as a desktop app. (Roman Urdu: ek free design tool jahan website ka design banta hai)">Figma</abbr> mein use karne deta hai). Without the font helper, the desktop app cannot see fonts you have installed locally, and your designs will show a fallback font instead.</p>
+<p>Download both from the official downloads page:</p>
+<p><strong><a href="https://www.figma.com/downloads/">https://www.figma.com/downloads/</a></strong></p>
+<p>That page has three things: the desktop app for Windows or Mac, the font installer for Windows or Mac, and the browser plugin list. Install the desktop app first, then run the font installer. After that, any font you install on your computer will appear in <abbr title="A free design tool where designers draw the look of a website, available in the browser and as a desktop app. (Roman Urdu: ek free design tool jahan website ka design banta hai)">Figma</abbr>'s font picker.</p>
+<table>
+<thead>
+<tr>
+<th>Version</th>
+<th>Pros</th>
+<th>Limitation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Browser (figma.com)</td>
+<td>No install needed, works on any computer</td>
+<td>Cannot see your local fonts by default</td>
+</tr>
+<tr>
+<td>Desktop app</td>
+<td>Faster, stays in its own window, better for daily use</td>
+<td>Needs the separate font installer for local fonts</td>
+</tr>
+<tr>
+<td><abbr title="A companion program from Figma that lets the app see fonts installed on your computer. (Roman Urdu: ek program jo Figma ko aapke computer ke fonts dikhata hai)">Font Helper</abbr> (companion)</td>
+<td>Bridges local fonts to both browser and desktop</td>
+<td>Must be installed and running in the background</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition tip">
+<p class="admonition-title">Which to use for this course</p>
+<p>Start with the browser version to open community files and follow along. When you start building your own designs, install the desktop app and the font helper together.</p>
+</div>
+<hr />
+<h2 id="signing-up-for-a-free-account">Signing up for a free account<a class="headerlink" href="#signing-up-for-a-free-account" title="Permanent link">&para;</a></h2>
+<p>Open your browser and go to figma.com. Click the sign up button. You can use your email or your Google account. <abbr title="A free design tool where designers draw the look of a website, available in the browser and as a desktop app. (Roman Urdu: ek free design tool jahan website ka design banta hai)">Figma</abbr> is free for personal use and learning. You do not pay anything to read designs, <abbr title="Saving an icon or image from Figma as a file on your computer. (Roman Urdu: icon ya image ko file ke taur par save karna)">export</abbr> assets, or use the community file library.</p>
+<hr />
+<h2 id="a-full-tour-of-the-figma-interface">A full tour of the <abbr title="A free design tool where designers draw the look of a website, available in the browser and as a desktop app. (Roman Urdu: ek free design tool jahan website ka design banta hai)">Figma</abbr> interface<a class="headerlink" href="#a-full-tour-of-the-figma-interface" title="Permanent link">&para;</a></h2>
+<p>When you open a <abbr title="A free design tool where designers draw the look of a website, available in the browser and as a desktop app. (Roman Urdu: ek free design tool jahan website ka design banta hai)">Figma</abbr> file, three panels fill the screen. Learning where each one is and what it does is the whole skill of "reading <abbr title="A free design tool where designers draw the look of a website, available in the browser and as a desktop app. (Roman Urdu: ek free design tool jahan website ka design banta hai)">Figma</abbr>."</p>
+<figure>
+<p><svg viewBox="0 0 800 380" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="svg-figma-full" style="max-width:100%;height:auto">
+<title id="svg-figma-full">The <abbr title="A free design tool where designers draw the look of a website, available in the browser and as a desktop app. (Roman Urdu: ek free design tool jahan website ka design banta hai)">Figma</abbr> interface labelled in detail: a toolbar at the top, layers panel on the left showing a tree of elements, the main canvas in the centre with a <abbr title="A fixed-size container in Figma representing one screen or section. (Roman Urdu: ek page ya screen Figma ke andar)">frame</abbr> containing a card design, and the properties panel on the right showing fill colour, font, size, padding, corner radius, and gap values.</title>
+<g fill="#1f1f1c" stroke="none">
+  <rect x="0" y="0" width="800" height="36" rx="0"/>
+</g>
+<g fill="#6b6b65" stroke="none">
+  <rect x="0" y="36" width="200" height="344" rx="0"/>
+  <rect x="600" y="36" width="200" height="344" rx="0"/>
+</g>
+<g fill="#e8e8e3" stroke="none">
+  <rect x="200" y="36" width="400" height="344" rx="0"/>
+</g>
+<g fill="#ffffff" stroke="#1f1f1c" stroke-width="1.5">
+  <rect x="240" y="80" width="320" height="220" rx="10"/>
+</g>
+<g fill="#f4f4f1" stroke="#1f1f1c" stroke-width="1">
+  <rect x="260" y="100" width="280" height="120" rx="6"/>
+</g>
+<g fill="#0fab95" stroke="none">
+  <rect x="280" y="180" width="100" height="28" rx="5"/>
+</g>
+<g font-family="Inter, sans-serif" font-size="11" fill="#1f1f1c" text-anchor="middle">
+  <g><text x="400" y="155">Card heading text</text></g>
+  <g><text x="400" y="172">A short description line</text></g>
+</g>
+<g font-family="Inter, sans-serif" font-size="11" fill="#ffffff" text-anchor="middle">
+  <g><text x="330" y="199">Get started</text></g>
+</g>
+<g font-family="Inter, sans-serif" font-size="11" fill="#1f1f1c" text-anchor="middle">
+  <g><text x="400" y="260">Card <abbr title="A reusable element in Figma, like a button, that can be placed many times. (Roman Urdu: ek reusable element jo baar baar use ho sakta hai)">component</abbr></text></g>
+</g>
+<g font-family="Inter, sans-serif" font-size="10" fill="#6b6b65">
+  <g><text x="8" y="62">Frame</text></g>
+  <g><text x="14" y="80">Card</text></g>
+  <g><text x="20" y="96">Heading</text></g>
+  <g><text x="20" y="112">Body</text></g>
+  <g><text x="20" y="128">Button</text></g>
+  <g><text x="14" y="148">Stats row</text></g>
+  <g><text x="14" y="164">Footer</text></g>
+</g>
+<g font-family="Inter, sans-serif" font-size="9" fill="#f4f4f1">
+  <g><text x="608" y="62">Fill</text></g>
+  <g><text x="786" y="62" text-anchor="end">#0fab95</text></g>
+  <g><text x="608" y="80">Font</text></g>
+  <g><text x="786" y="80" text-anchor="end">Inter</text></g>
+  <g><text x="608" y="98">Size</text></g>
+  <g><text x="786" y="98" text-anchor="end">16 px</text></g>
+  <g><text x="608" y="116">Weight</text></g>
+  <g><text x="786" y="116" text-anchor="end">600</text></g>
+  <g><text x="608" y="134">Padding</text></g>
+  <g><text x="786" y="134" text-anchor="end">16 px</text></g>
+  <g><text x="608" y="152">Corner R.</text></g>
+  <g><text x="786" y="152" text-anchor="end">12 px</text></g>
+  <g><text x="608" y="170">Gap</text></g>
+  <g><text x="786" y="170" text-anchor="end">8 px</text></g>
+  <g><text x="608" y="188">Width</text></g>
+  <g><text x="786" y="188" text-anchor="end">320 px</text></g>
+</g>
+<g font-family="Inter, sans-serif" font-size="12" fill="#ffffff" text-anchor="middle">
+  <g><text x="400" y="20">Toolbar: move, <abbr title="A fixed-size container in Figma representing one screen or section. (Roman Urdu: ek page ya screen Figma ke andar)">frame</abbr>, shape, text, and <abbr title="A reusable element in Figma, like a button, that can be placed many times. (Roman Urdu: ek reusable element jo baar baar use ho sakta hai)">component</abbr> tools</text></g>
+</g>
+<g font-family="Inter, sans-serif" font-size="11" fill="#f4f4f1" text-anchor="middle">
+  <g><text x="100" y="56">Layers panel</text></g>
+  <g><text x="400" y="56">Canvas</text></g>
+  <g><text x="700" y="56">Properties / Inspect</text></g>
+</g>
+<g font-family="Inter, sans-serif" font-size="10" fill="#1f1f1c" text-anchor="middle">
+  <g><text x="100" y="370">tree of all elements</text></g>
+  <g><text x="400" y="370">click to select; scroll and zoom</text></g>
+  <g><text x="700" y="370">exact values for selected element</text></g>
+</g>
+<g stroke="#f4f4f1" stroke-width="0.5" stroke-dasharray="4 3" fill="none">
+  <line x1="200" y1="36" x2="200" y2="380"/>
+  <line x1="600" y1="36" x2="600" y2="380"/>
+</g>
+</svg></p>
+<figcaption>The four areas of the Figma screen. Top: the toolbar holds tools for selecting, drawing frames, adding text, and creating components. Left: the layers panel lists every element as a tree. Centre: the canvas is the design space you scroll and zoom. Right: the properties panel shows exact values for whatever you click.</figcaption>
+</figure>
+<h3 id="the-toolbar">The toolbar<a class="headerlink" href="#the-toolbar" title="Permanent link">&para;</a></h3>
+<p>The toolbar runs across the top. It holds the tools you need to work with designs:</p>
+<ul>
+<li><strong>Move tool</strong> (V): the default. Click to select elements on the canvas.</li>
+<li><strong>Frame tool</strong> (F): draw a <abbr title="A fixed-size container in Figma representing one screen or section. (Roman Urdu: ek page ya screen Figma ke andar)">frame</abbr>, which is <abbr title="A free design tool where designers draw the look of a website, available in the browser and as a desktop app. (Roman Urdu: ek free design tool jahan website ka design banta hai)">Figma</abbr>'s word for a screen or a container.</li>
+<li><strong>Shape tools</strong>: draw rectangles, ellipses, and lines.</li>
+<li><strong>Text tool</strong> (T): click anywhere on the canvas and type.</li>
+<li><strong>Component tool</strong>: create reusable components (explained below).</li>
+</ul>
+<p>As a developer reading a design, you mostly stay on the move tool. You click things and read the right panel.</p>
+<h3 id="the-layers-panel-left">The layers panel (left)<a class="headerlink" href="#the-layers-panel-left" title="Permanent link">&para;</a></h3>
+<p>The layers panel is a tree. Every element in the design has a row here. Groups nest inside groups, just like HTML elements nest inside other HTML elements. You can click a row in the layers panel to select that element on the canvas, or click the element on the canvas to highlight it in the layers panel. Both directions work.</p>
+<p>When a design has many overlapping elements, it is sometimes easier to click the layers panel to select the one you want, rather than trying to click the right thing on the canvas.</p>
+<h3 id="the-canvas-centre">The canvas (centre)<a class="headerlink" href="#the-canvas-centre" title="Permanent link">&para;</a></h3>
+<p>The canvas is the large area in the middle. It holds all the frames (screens). You can:</p>
+<ul>
+<li>Scroll with the mouse wheel to move up and down.</li>
+<li>Hold Space and drag to pan in any direction.</li>
+<li>Pinch to zoom (trackpad) or use Ctrl + scroll to zoom in and out.</li>
+<li>Press Shift + 1 to fit the whole file in view, or Shift + 2 to zoom to your selection.</li>
+</ul>
+<h3 id="the-properties-panel-right">The properties panel (right)<a class="headerlink" href="#the-properties-panel-right" title="Permanent link">&para;</a></h3>
+<p>This is where you do most of your developer work. Click an element and the right panel shows every value: fill colour, font, size, weight, spacing, corner radius, and more. In standard <abbr title="A free design tool where designers draw the look of a website, available in the browser and as a desktop app. (Roman Urdu: ek free design tool jahan website ka design banta hai)">Figma</abbr> this is the Design panel. When you switch to <abbr title="A Figma view that shows exact CSS values and code snippets for developers. (Roman Urdu: Figma ka woh hissa jo developer ke liye values aur CSS dikhata hai)">Dev Mode</abbr> (explained below), it becomes the Inspect panel and adds CSS code snippets.</p>
+<h3 id="frames-and-components">Frames and components<a class="headerlink" href="#frames-and-components" title="Permanent link">&para;</a></h3>
+<p>A <strong><abbr title="A fixed-size container in Figma representing one screen or section. (Roman Urdu: ek page ya screen Figma ke andar)">frame</abbr></strong> (Roman Urdu: <abbr title="A free design tool where designers draw the look of a website, available in the browser and as a desktop app. (Roman Urdu: ek free design tool jahan website ka design banta hai)">Figma</abbr> mein ek page ya screen, HTML ke section jaisi) is a fixed-size container. Think of it as one phone screen or one desktop screen. Designers put all the elements for one view inside one <abbr title="A fixed-size container in Figma representing one screen or section. (Roman Urdu: ek page ya screen Figma ke andar)">frame</abbr>.</p>
+<p>A <strong><abbr title="A reusable element in Figma, like a button, that can be placed many times. (Roman Urdu: ek reusable element jo baar baar use ho sakta hai)">component</abbr></strong> is a reusable building block. The designer makes a button once, turns it into a <abbr title="A reusable element in Figma, like a button, that can be placed many times. (Roman Urdu: ek reusable element jo baar baar use ho sakta hai)">component</abbr>, and then places copies of it across many frames. When you see a small four-diamond icon in the layers panel, that is a <abbr title="A reusable element in Figma, like a button, that can be placed many times. (Roman Urdu: ek reusable element jo baar baar use ho sakta hai)">component</abbr>. You can click any copy and still read its properties normally.</p>
+<hr />
+<h2 id="chapter-4-ideas-inside-figma-designing-with-hierarchy-contrast-and-spacing">Chapter 4 ideas inside <abbr title="A free design tool where designers draw the look of a website, available in the browser and as a desktop app. (Roman Urdu: ek free design tool jahan website ka design banta hai)">Figma</abbr>: designing with hierarchy, contrast, and spacing<a class="headerlink" href="#chapter-4-ideas-inside-figma-designing-with-hierarchy-contrast-and-spacing" title="Permanent link">&para;</a></h2>
+<p>You spent Chapter 4 learning why design choices matter for people. Now you see where those choices live in <abbr title="A free design tool where designers draw the look of a website, available in the browser and as a desktop app. (Roman Urdu: ek free design tool jahan website ka design banta hai)">Figma</abbr>'s panels.</p>
+<h3 id="visual-hierarchy-in-the-layers-panel">Visual hierarchy in the layers panel<a class="headerlink" href="#visual-hierarchy-in-the-layers-panel" title="Permanent link">&para;</a></h3>
+<p>In lesson 4.5 you learned that hierarchy is about guiding the eye from the most important thing to the least important. In a <abbr title="A free design tool where designers draw the look of a website, available in the browser and as a desktop app. (Roman Urdu: ek free design tool jahan website ka design banta hai)">Figma</abbr> file, hierarchy is visible in the layers panel. The elements at the top of a <abbr title="A fixed-size container in Figma representing one screen or section. (Roman Urdu: ek page ya screen Figma ke andar)">frame</abbr>'s <abbr title="One element in the design, listed in the left panel tree. (Roman Urdu: design ka ek hissa, left panel mein list hota hai)">layer</abbr> list appear on top visually. Designers name layers clearly (Heading, Body, CTA Button, Trust stats) so the tree reads like an outline of the page. When you open a well-structured design, the layers panel tells you the reading order before you even look at the canvas.</p>
+<p>As a developer you can use the layers panel to plan your HTML outline. If the layers say Frame / Header / Hero / Stats / Donate form / Footer, your <code>&lt;header&gt;</code>, <code>&lt;section&gt;</code>, <code>&lt;section&gt;</code>, <code>&lt;section&gt;</code> structure writes itself.</p>
+<h3 id="contrast-reading-it-from-the-properties-panel">Contrast: reading it from the properties panel<a class="headerlink" href="#contrast-reading-it-from-the-properties-panel" title="Permanent link">&para;</a></h3>
+<p>In lesson 4.5 you learned that contrast is the engine of emphasis. In <abbr title="A free design tool where designers draw the look of a website, available in the browser and as a desktop app. (Roman Urdu: ek free design tool jahan website ka design banta hai)">Figma</abbr>, contrast lives in the Fill and Typography rows of the right panel. When you click the page heading in a design, you might see fill <code>#111827</code> (near-black) and font weight 700. When you click the body copy, you might see fill <code>#6b7280</code> (medium grey) and weight 400. That drop in fill darkness and weight is the designer expressing contrast. You read it in the panel and copy it faithfully.</p>
+<h3 id="spacing-and-a-type-scale-the-layout-section">Spacing and a type scale: the layout section<a class="headerlink" href="#spacing-and-a-type-scale-the-layout-section" title="Permanent link">&para;</a></h3>
+<p>In lesson 4.5 you saw a type scale: five intentional sizes, each with a clear role. In <abbr title="A free design tool where designers draw the look of a website, available in the browser and as a desktop app. (Roman Urdu: ek free design tool jahan website ka design banta hai)">Figma</abbr>, the typography properties for each text element show you the type scale the designer chose. Click every text element once and note the font sizes. You will usually see three to five distinct values. Those become your Tailwind text size classes.</p>
+<p>Spacing appears in the Layout panel on the right. Every <abbr title="A Figma feature that arranges children automatically, equivalent to CSS flexbox. (Roman Urdu: Figma ka flex jaisa feature jo elements ko automatically lagata hai)">auto-layout</abbr> <abbr title="A fixed-size container in Figma representing one screen or section. (Roman Urdu: ek page ya screen Figma ke andar)">frame</abbr> shows its padding and gap values. These map directly to Tailwind spacing classes.</p>
+<figure>
+<p><svg viewBox="0 0 700 280" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="svg-ch4-figma" style="max-width:100%;height:auto">
+<title id="svg-ch4-figma">A diagram connecting Chapter 4 design concepts to their location in the <abbr title="A free design tool where designers draw the look of a website, available in the browser and as a desktop app. (Roman Urdu: ek free design tool jahan website ka design banta hai)">Figma</abbr> interface. Visual hierarchy maps to the layers panel order. Contrast maps to fill colour and font weight in the properties panel. Type scale maps to font size values across text layers. Spacing maps to padding and gap in the <abbr title="A Figma feature that arranges children automatically, equivalent to CSS flexbox. (Roman Urdu: Figma ka flex jaisa feature jo elements ko automatically lagata hai)">auto-layout</abbr> section.</title>
+<g fill="#ffffff" stroke="#1f1f1c" stroke-width="1.5">
+  <rect x="20" y="30" width="160" height="220" rx="8"/>
+  <rect x="260" y="30" width="200" height="220" rx="8"/>
+  <rect x="540" y="30" width="140" height="220" rx="8"/>
+</g>
+<g font-family="Inter, sans-serif" font-size="12" font-weight="600" fill="#1f1f1c" text-anchor="middle">
+  <g><text x="100" y="22">Chapter 4 concept</text></g>
+  <g><text x="360" y="22">Where it lives in <abbr title="A free design tool where designers draw the look of a website, available in the browser and as a desktop app. (Roman Urdu: ek free design tool jahan website ka design banta hai)">Figma</abbr></text></g>
+  <g><text x="610" y="22">What you read as a dev</text></g>
+</g>
+<g font-family="Inter, sans-serif" font-size="11" fill="#1f1f1c">
+  <g><text x="30" y="65">Visual hierarchy</text></g>
+  <g><text x="30" y="115">Contrast</text></g>
+  <g><text x="30" y="165">Type scale</text></g>
+  <g><text x="30" y="215">Spacing / rhythm</text></g>
+</g>
+<g font-family="Inter, sans-serif" font-size="10" fill="#6b6b65">
+  <g><text x="270" y="60">Layers panel: top items</text></g>
+  <g><text x="270" y="74">appear first / most prominent</text></g>
+  <g><text x="270" y="110">Fill colour + font weight</text></g>
+  <g><text x="270" y="124">in the properties panel</text></g>
+  <g><text x="270" y="160">Font size across text layers;</text></g>
+  <g><text x="270" y="174">usually 3 to 5 distinct sizes</text></g>
+  <g><text x="270" y="210">Auto-layout: padding and gap</text></g>
+  <g><text x="270" y="224">values in the Layout section</text></g>
+</g>
+<g font-family="Inter, sans-serif" font-size="10" fill="#0fab95">
+  <g><text x="550" y="60">Layer order</text></g>
+  <g><text x="550" y="74">and nesting</text></g>
+  <g><text x="550" y="110">Hex codes,</text></g>
+  <g><text x="550" y="124">weight numbers</text></g>
+  <g><text x="550" y="160">px sizes that</text></g>
+  <g><text x="550" y="174">become text-<em> classes</text></g>
+  <g><text x="550" y="210">px gaps that</text></g>
+  <g><text x="550" y="224">become gap-</em> classes</text></g>
+</g>
+<g stroke="#6b6b65" stroke-width="0.5" stroke-dasharray="3 3" fill="none">
+  <line x1="20" y1="86" x2="700" y2="86"/>
+  <line x1="20" y1="136" x2="700" y2="136"/>
+  <line x1="20" y1="186" x2="700" y2="186"/>
+</g>
+<defs>
+  <marker id="bq-arr-ch4" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+    <path d="M0 0 L10 5 L0 10 z" fill="currentColor"/>
+  </marker>
+</defs>
+<g stroke="currentColor" stroke-width="1" fill="none" marker-end="url(#bq-arr-ch4)">
+  <line x1="180" y1="62" x2="255" y2="62"/>
+  <line x1="180" y1="112" x2="255" y2="112"/>
+  <line x1="180" y1="162" x2="255" y2="162"/>
+  <line x1="180" y1="212" x2="255" y2="212"/>
+  <line x1="462" y1="62" x2="536" y2="62"/>
+  <line x1="462" y1="112" x2="536" y2="112"/>
+  <line x1="462" y1="162" x2="536" y2="162"/>
+  <line x1="462" y1="212" x2="536" y2="212"/>
+</g>
+</svg></p>
+<figcaption>Every Chapter 4 design concept has a direct home in the Figma interface. Reading those panels tells you what the designer decided and why.</figcaption>
+</figure>
+<hr />
+<h2 id="auto-layout-figmas-version-of-flexbox">Auto-layout: <abbr title="A free design tool where designers draw the look of a website, available in the browser and as a desktop app. (Roman Urdu: ek free design tool jahan website ka design banta hai)">Figma</abbr>'s version of flexbox<a class="headerlink" href="#auto-layout-figmas-version-of-flexbox" title="Permanent link">&para;</a></h2>
+<p>Auto-layout (Roman Urdu: <abbr title="A free design tool where designers draw the look of a website, available in the browser and as a desktop app. (Roman Urdu: ek free design tool jahan website ka design banta hai)">Figma</abbr> ka woh feature jo elements ko flex ki tarah automatically lagata hai) is one of the most important features in <abbr title="A free design tool where designers draw the look of a website, available in the browser and as a desktop app. (Roman Urdu: ek free design tool jahan website ka design banta hai)">Figma</abbr> for developers to understand. When a designer applies <abbr title="A Figma feature that arranges children automatically, equivalent to CSS flexbox. (Roman Urdu: Figma ka flex jaisa feature jo elements ko automatically lagata hai)">auto-layout</abbr> to a <abbr title="A fixed-size container in Figma representing one screen or section. (Roman Urdu: ek page ya screen Figma ke andar)">frame</abbr>, the children inside it are arranged automatically, just like CSS flexbox arranges children in a row or column.</p>
+<p>Here is the direct mapping:</p>
+<table>
+<thead>
+<tr>
+<th>Auto-layout setting</th>
+<th>CSS / Tailwind equivalent</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Direction: horizontal</td>
+<td><code>flex flex-row</code></td>
+</tr>
+<tr>
+<td>Direction: vertical</td>
+<td><code>flex flex-col</code></td>
+</tr>
+<tr>
+<td>Gap (space between children)</td>
+<td><code>gap-4</code> (gap / 4 = Tailwind step)</td>
+</tr>
+<tr>
+<td>Align items: centre</td>
+<td><code>items-center</code></td>
+</tr>
+<tr>
+<td>Justify content: space between</td>
+<td><code>justify-between</code></td>
+</tr>
+<tr>
+<td>Padding: 16px all sides</td>
+<td><code>p-4</code></td>
+</tr>
+<tr>
+<td>Padding: 8px top/bottom, 16px left/right</td>
+<td><code>py-2 px-4</code></td>
+</tr>
+<tr>
+<td>Wrap: enabled</td>
+<td><code>flex-wrap</code></td>
+</tr>
+</tbody>
+</table>
+<p>When you click an <abbr title="A Figma feature that arranges children automatically, equivalent to CSS flexbox. (Roman Urdu: Figma ka flex jaisa feature jo elements ko automatically lagata hai)">auto-layout</abbr> <abbr title="A fixed-size container in Figma representing one screen or section. (Roman Urdu: ek page ya screen Figma ke andar)">frame</abbr> and see "Horizontal, gap 16, padding 24", you already know the Tailwind classes before you open your editor: <code>flex flex-row gap-4 p-6</code>.</p>
+<p>This is why understanding flexbox from lesson 3.2 is so useful here. The concepts are the same; only the words used to describe them differ.</p>
+<figure>
+<p><svg viewBox="0 0 700 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="svg-autolayout" style="max-width:100%;height:auto">
+<title id="svg-autolayout">Two panels side by side. Left: a <abbr title="A free design tool where designers draw the look of a website, available in the browser and as a desktop app. (Roman Urdu: ek free design tool jahan website ka design banta hai)">Figma</abbr> <abbr title="A Figma feature that arranges children automatically, equivalent to CSS flexbox. (Roman Urdu: Figma ka flex jaisa feature jo elements ko automatically lagata hai)">auto-layout</abbr> <abbr title="A fixed-size container in Figma representing one screen or section. (Roman Urdu: ek page ya screen Figma ke andar)">frame</abbr> showing horizontal direction, gap of 16 px, and padding of 24 px, with three child boxes inside. Right: the equivalent Tailwind code: flex flex-row gap-4 p-6, with three div elements inside a parent div.</title>
+<g fill="#ffffff" stroke="#1f1f1c" stroke-width="1.5">
+  <rect x="20" y="30" width="300" height="160" rx="8"/>
+  <rect x="400" y="30" width="280" height="160" rx="8"/>
+</g>
+<g font-family="Inter, sans-serif" font-size="11" font-weight="600" fill="#1f1f1c" text-anchor="middle">
+  <g><text x="170" y="22"><abbr title="A free design tool where designers draw the look of a website, available in the browser and as a desktop app. (Roman Urdu: ek free design tool jahan website ka design banta hai)">Figma</abbr> <abbr title="A Figma feature that arranges children automatically, equivalent to CSS flexbox. (Roman Urdu: Figma ka flex jaisa feature jo elements ko automatically lagata hai)">auto-layout</abbr> panel</text></g>
+  <g><text x="540" y="22">Tailwind HTML</text></g>
+</g>
+<g font-family="Inter, sans-serif" font-size="10" fill="#6b6b65">
+  <g><text x="30" y="56">Direction: Horizontal</text></g>
+  <g><text x="30" y="74">Gap: 16 px</text></g>
+  <g><text x="30" y="92">Padding: 24 px all sides</text></g>
+  <g><text x="30" y="110">Align: centre</text></g>
+</g>
+<g fill="#f4f4f1" stroke="#6b6b65" stroke-width="1">
+  <rect x="30" y="124" width="60" height="32" rx="4"/>
+  <rect x="106" y="124" width="60" height="32" rx="4"/>
+  <rect x="182" y="124" width="60" height="32" rx="4"/>
+</g>
+<g font-family="Inter, sans-serif" font-size="10" fill="#6b6b65" text-anchor="middle">
+  <g><text x="60" y="144">child 1</text></g>
+  <g><text x="136" y="144">child 2</text></g>
+  <g><text x="212" y="144">child 3</text></g>
+</g>
+<g font-family="JetBrains Mono, monospace" font-size="10" fill="#1f1f1c">
+  <g><text x="410" y="56">&lt;div class="flex flex-row</text></g>
+  <g><text x="410" y="72">        gap-4 p-6</text></g>
+  <g><text x="410" y="88">        items-center"&gt;</text></g>
+  <g><text x="420" y="108">  &lt;div&gt;child 1&lt;/div&gt;</text></g>
+  <g><text x="420" y="124">  &lt;div&gt;child 2&lt;/div&gt;</text></g>
+  <g><text x="420" y="140">  &lt;div&gt;child 3&lt;/div&gt;</text></g>
+  <g><text x="410" y="156">&lt;/div&gt;</text></g>
+</g>
+<defs>
+  <marker id="bq-arr-al" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+    <path d="M0 0 L10 5 L0 10 z" fill="currentColor"/>
+  </marker>
+</defs>
+<g stroke="currentColor" stroke-width="1.5" fill="none" marker-end="url(#bq-arr-al)">
+  <line x1="322" y1="110" x2="395" y2="110"/>
+</g>
+</svg></p>
+<figcaption>An auto-layout frame in Figma translates directly to a flex container in Tailwind. Read the direction, gap, and padding from the Figma panel and write the matching Tailwind classes.</figcaption>
+</figure>
+<hr />
+<h2 id="reading-values-in-dev-mode">Reading values in <abbr title="A Figma view that shows exact CSS values and code snippets for developers. (Roman Urdu: Figma ka woh hissa jo developer ke liye values aur CSS dikhata hai)">Dev Mode</abbr><a class="headerlink" href="#reading-values-in-dev-mode" title="Permanent link">&para;</a></h2>
+<p><abbr title="A free design tool where designers draw the look of a website, available in the browser and as a desktop app. (Roman Urdu: ek free design tool jahan website ka design banta hai)">Figma</abbr> has a special view for developers. It is called <abbr title="A Figma view that shows exact CSS values and code snippets for developers. (Roman Urdu: Figma ka woh hissa jo developer ke liye values aur CSS dikhata hai)">Dev Mode</abbr> (older files call it Inspect mode). Turn it on with the toggle at the top right of the screen, or press Shift + D. The right panel changes to show CSS code snippets alongside the visual values.</p>
+<p>Click an element in <abbr title="A Figma view that shows exact CSS values and code snippets for developers. (Roman Urdu: Figma ka woh hissa jo developer ke liye values aur CSS dikhata hai)">Dev Mode</abbr> and the panel shows:</p>
+<ul>
+<li>The <strong>fill</strong> colour as a hex code, for example <code>#0fab95</code></li>
+<li>The <strong>font family</strong>, like Inter or Poppins</li>
+<li>The <strong>font size</strong> in px, like 16px</li>
+<li>The <strong>font weight</strong>, like 400 or 700</li>
+<li>The <strong>padding</strong> on each side</li>
+<li>The <strong>gap</strong> between children (if <abbr title="A Figma feature that arranges children automatically, equivalent to CSS flexbox. (Roman Urdu: Figma ka flex jaisa feature jo elements ko automatically lagata hai)">auto-layout</abbr>)</li>
+<li>The <strong>border radius</strong> in px</li>
+<li>A <strong>CSS snippet</strong> you can copy</li>
+</ul>
+<p>Do not guess these numbers. Read them from the panel every time. A single wrong value can break a layout or mismatch a colour.</p>
+<div class="admonition info">
+<p class="admonition-title">Screenshot coming soon</p>
+<p><abbr title="A free design tool where designers draw the look of a website, available in the browser and as a desktop app. (Roman Urdu: ek free design tool jahan website ka design banta hai)">Figma</abbr> <abbr title="A Figma view that shows exact CSS values and code snippets for developers. (Roman Urdu: Figma ka woh hissa jo developer ke liye values aur CSS dikhata hai)">Dev Mode</abbr> on Windows with a button selected: the right panel shows fill colour hex, font, size, weight, padding, and corner radius, plus the generated CSS snippet.</p>
+</div>
+<hr />
+<h2 id="setting-up-hierarchy-contrast-and-type-scale-in-your-own-design">Setting up hierarchy, contrast, and type scale in your own design<a class="headerlink" href="#setting-up-hierarchy-contrast-and-type-scale-in-your-own-design" title="Permanent link">&para;</a></h2>
+<p>You may sometimes build a design from scratch in <abbr title="A free design tool where designers draw the look of a website, available in the browser and as a desktop app. (Roman Urdu: ek free design tool jahan website ka design banta hai)">Figma</abbr> before writing any code. Here is how to apply the Chapter 4 thinking directly.</p>
+<p><strong>Setting up your type scale first.</strong> Before placing any text, decide on your sizes. Pick four or five values based on lesson 4.5: one large size for the page heading (36px), one for section headings (24px), one for subheadings (18px), one for body (16px), and one for captions (13px). Save them as Text Styles in <abbr title="A free design tool where designers draw the look of a website, available in the browser and as a desktop app. (Roman Urdu: ek free design tool jahan website ka design banta hai)">Figma</abbr> (the four-square icon next to any font property). Every text element then uses one of these named styles. The result is a consistent type scale in your design, which also means consistent Tailwind <code>text-*</code> classes in your code.</p>
+<p><strong>Using fills and weights to express contrast.</strong> In lesson 4.5 you learned that bold, dark text stands out while regular, lighter text recedes. In <abbr title="A free design tool where designers draw the look of a website, available in the browser and as a desktop app. (Roman Urdu: ek free design tool jahan website ka design banta hai)">Figma</abbr>, make your heading layers use weight 700 and fill <code>#111827</code>. Make your body layers use weight 400 and fill <code>#6b7280</code>. The contrast is immediate and correct.</p>
+<p><strong>Using gap and padding to create rhythm.</strong> Consistent spacing was the key point of lesson 4.5's rhythm section. In <abbr title="A free design tool where designers draw the look of a website, available in the browser and as a desktop app. (Roman Urdu: ek free design tool jahan website ka design banta hai)">Figma</abbr>, <abbr title="A Figma feature that arranges children automatically, equivalent to CSS flexbox. (Roman Urdu: Figma ka flex jaisa feature jo elements ko automatically lagata hai)">auto-layout</abbr> gap and padding are numbers, not guesses. Use multiples of 4 or 8 for all spacing values (4, 8, 12, 16, 24, 32, 48). These map perfectly to Tailwind's spacing scale.</p>
+<hr />
+<h2 id="from-figma-css-to-tailwind">From <abbr title="A free design tool where designers draw the look of a website, available in the browser and as a desktop app. (Roman Urdu: ek free design tool jahan website ka design banta hai)">Figma</abbr> CSS to Tailwind<a class="headerlink" href="#from-figma-css-to-tailwind" title="Permanent link">&para;</a></h2>
+<p><abbr title="A free design tool where designers draw the look of a website, available in the browser and as a desktop app. (Roman Urdu: ek free design tool jahan website ka design banta hai)">Figma</abbr> <abbr title="A Figma view that shows exact CSS values and code snippets for developers. (Roman Urdu: Figma ka woh hissa jo developer ke liye values aur CSS dikhata hai)">Dev Mode</abbr> can show you CSS for any element. The code panel gives you something like this.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nt">padding</span><span class="o">:</span><span class="w"> </span><span class="nt">16px</span><span class="o">;</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nt">border-radius</span><span class="o">:</span><span class="w"> </span><span class="nt">12px</span><span class="o">;</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="nt">background</span><span class="o">:</span><span class="w"> </span><span class="p">#</span><span class="nn">0fab95</span><span class="o">;</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="nt">font-size</span><span class="o">:</span><span class="w"> </span><span class="nt">16px</span><span class="o">;</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="nt">font-weight</span><span class="o">:</span><span class="w"> </span><span class="nt">600</span><span class="o">;</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="nt">gap</span><span class="o">:</span><span class="w"> </span><span class="nt">8px</span><span class="o">;</span>
+</code></pre></div>
+<p>You turn each line into a Tailwind class. Here is the translation for that block.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="p">&lt;</span><span class="nt">button</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;p-4 rounded-xl bg-[#0fab95] text-base font-semibold gap-2&quot;</span><span class="p">&gt;</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>  Click me
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+</code></pre></div>
+<p>The step-by-step reasoning:</p>
+<ul>
+<li><code>padding: 16px</code> becomes <code>p-4</code>. Tailwind's spacing scale uses 4px steps: 16 / 4 = 4.</li>
+<li><code>border-radius: 12px</code> becomes <code>rounded-xl</code>. Tailwind's <code>rounded-xl</code> maps to 12px.</li>
+<li><code>background: #0fab95</code> becomes <code>bg-[#0fab95]</code>. No built-in Tailwind colour matches this hex, so you use an <strong><abbr title="A custom Tailwind value written inside square brackets, like bg-[#0fab95]. (Roman Urdu: square brackets mein likhi gayi custom Tailwind value)">arbitrary value</abbr></strong> (Roman Urdu: square brackets mein custom value, jab koi class match na kare) by placing the value in square brackets.</li>
+<li><code>font-size: 16px</code> becomes <code>text-base</code>. Base is Tailwind's name for 16px.</li>
+<li><code>font-weight: 600</code> becomes <code>font-semibold</code>. Tailwind maps 600 to semibold.</li>
+<li><code>gap: 8px</code> becomes <code>gap-2</code>. 8 / 4 = 2.</li>
+</ul>
+<p>Here is a full reference table for the most common <abbr title="A free design tool where designers draw the look of a website, available in the browser and as a desktop app. (Roman Urdu: ek free design tool jahan website ka design banta hai)">Figma</abbr> to Tailwind translations.</p>
+<table>
+<thead>
+<tr>
+<th><abbr title="A free design tool where designers draw the look of a website, available in the browser and as a desktop app. (Roman Urdu: ek free design tool jahan website ka design banta hai)">Figma</abbr> property</th>
+<th>Example value</th>
+<th>Tailwind class</th>
+<th>Reasoning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Fill (hex, custom)</td>
+<td><code>#0fab95</code></td>
+<td><code>bg-[#0fab95]</code></td>
+<td>No built-in match; use <abbr title="A custom Tailwind value written inside square brackets, like bg-[#0fab95]. (Roman Urdu: square brackets mein likhi gayi custom Tailwind value)">arbitrary value</abbr></td>
+</tr>
+<tr>
+<td>Fill (standard teal)</td>
+<td><code>#14b8a6</code></td>
+<td><code>bg-teal-400</code></td>
+<td>Matches the palette swatch</td>
+</tr>
+<tr>
+<td>Fill (text, dark)</td>
+<td><code>#111827</code></td>
+<td><code>text-gray-900</code></td>
+<td>Near match in Tailwind grey scale</td>
+</tr>
+<tr>
+<td>Fill (text, muted)</td>
+<td><code>#6b7280</code></td>
+<td><code>text-gray-500</code></td>
+<td>Near match in Tailwind grey scale</td>
+</tr>
+<tr>
+<td>Corner radius</td>
+<td><code>4px</code></td>
+<td><code>rounded</code></td>
+<td>Default rounded value</td>
+</tr>
+<tr>
+<td>Corner radius</td>
+<td><code>8px</code></td>
+<td><code>rounded-lg</code></td>
+<td>lg = 8px</td>
+</tr>
+<tr>
+<td>Corner radius</td>
+<td><code>12px</code></td>
+<td><code>rounded-xl</code></td>
+<td>xl = 12px</td>
+</tr>
+<tr>
+<td>Corner radius</td>
+<td><code>9999px</code></td>
+<td><code>rounded-full</code></td>
+<td>Full pill shape</td>
+</tr>
+<tr>
+<td>Padding (all sides)</td>
+<td><code>16px</code></td>
+<td><code>p-4</code></td>
+<td>16 / 4 = step 4</td>
+</tr>
+<tr>
+<td>Padding (horizontal)</td>
+<td><code>24px</code> left and right</td>
+<td><code>px-6</code></td>
+<td>24 / 4 = step 6</td>
+</tr>
+<tr>
+<td>Padding (vertical)</td>
+<td><code>8px</code> top and bottom</td>
+<td><code>py-2</code></td>
+<td>8 / 4 = step 2</td>
+</tr>
+<tr>
+<td>Gap (<abbr title="A Figma feature that arranges children automatically, equivalent to CSS flexbox. (Roman Urdu: Figma ka flex jaisa feature jo elements ko automatically lagata hai)">auto-layout</abbr>)</td>
+<td><code>16px</code></td>
+<td><code>gap-4</code></td>
+<td>16 / 4 = step 4</td>
+</tr>
+<tr>
+<td>Gap (<abbr title="A Figma feature that arranges children automatically, equivalent to CSS flexbox. (Roman Urdu: Figma ka flex jaisa feature jo elements ko automatically lagata hai)">auto-layout</abbr>)</td>
+<td><code>8px</code></td>
+<td><code>gap-2</code></td>
+<td>8 / 4 = step 2</td>
+</tr>
+<tr>
+<td>Font weight</td>
+<td><code>400</code></td>
+<td><code>font-normal</code></td>
+<td>Normal weight</td>
+</tr>
+<tr>
+<td>Font weight</td>
+<td><code>500</code></td>
+<td><code>font-medium</code></td>
+<td>Medium weight</td>
+</tr>
+<tr>
+<td>Font weight</td>
+<td><code>600</code></td>
+<td><code>font-semibold</code></td>
+<td>Semibold weight</td>
+</tr>
+<tr>
+<td>Font weight</td>
+<td><code>700</code></td>
+<td><code>font-bold</code></td>
+<td>Bold weight</td>
+</tr>
+<tr>
+<td>Font size</td>
+<td><code>13px</code></td>
+<td><code>text-sm</code></td>
+<td>sm = 13.5px (use for captions)</td>
+</tr>
+<tr>
+<td>Font size</td>
+<td><code>16px</code></td>
+<td><code>text-base</code></td>
+<td>base = 16px</td>
+</tr>
+<tr>
+<td>Font size</td>
+<td><code>18px</code></td>
+<td><code>text-lg</code></td>
+<td>lg = 18px</td>
+</tr>
+<tr>
+<td>Font size</td>
+<td><code>24px</code></td>
+<td><code>text-2xl</code></td>
+<td>2xl = 24px</td>
+</tr>
+<tr>
+<td>Font size</td>
+<td><code>30px</code></td>
+<td><code>text-3xl</code></td>
+<td>3xl = 30px</td>
+</tr>
+<tr>
+<td>Font size</td>
+<td><code>36px</code></td>
+<td><code>text-4xl</code></td>
+<td>4xl = 36px</td>
+</tr>
+<tr>
+<td>Text colour (dark)</td>
+<td><code>#1f2937</code></td>
+<td><code>text-gray-800</code></td>
+<td>Near match</td>
+</tr>
+<tr>
+<td>Auto-layout direction</td>
+<td>horizontal</td>
+<td><code>flex flex-row</code></td>
+<td>Row direction</td>
+</tr>
+<tr>
+<td>Auto-layout direction</td>
+<td>vertical</td>
+<td><code>flex flex-col</code></td>
+<td>Column direction</td>
+</tr>
+<tr>
+<td>Align items centre</td>
+<td>centre</td>
+<td><code>items-center</code></td>
+<td>Vertical centering in row</td>
+</tr>
+<tr>
+<td>Justify: space between</td>
+<td>space between</td>
+<td><code>justify-between</code></td>
+<td>Push children to edges</td>
+</tr>
+<tr>
+<td>Width: fill container</td>
+<td>fill</td>
+<td><code>w-full</code></td>
+<td>Full width</td>
+</tr>
+<tr>
+<td>Width: hug contents</td>
+<td>hug</td>
+<td>no class needed</td>
+<td>Default div behaviour</td>
+</tr>
+<tr>
+<td>Opacity</td>
+<td><code>50%</code></td>
+<td><code>opacity-50</code></td>
+<td>Direct percentage match</td>
+</tr>
+<tr>
+<td>Text align</td>
+<td>centre</td>
+<td><code>text-center</code></td>
+<td>Direct match</td>
+</tr>
+<tr>
+<td>Line height</td>
+<td><code>1.5</code></td>
+<td><code>leading-normal</code></td>
+<td>1.5 = normal in Tailwind</td>
+</tr>
+</tbody>
+</table>
+<p>The pattern is always the same: read the <abbr title="A free design tool where designers draw the look of a website, available in the browser and as a desktop app. (Roman Urdu: ek free design tool jahan website ka design banta hai)">Figma</abbr> value, find the nearest Tailwind class, and use an <abbr title="A custom Tailwind value written inside square brackets, like bg-[#0fab95]. (Roman Urdu: square brackets mein likhi gayi custom Tailwind value)">arbitrary value</abbr> only when no class matches closely enough.</p>
+<details class="note urdu">
+<summary>اردو میں مزید وضاحت</summary>
+<p>فگما ڈیو موڈ آپ کو ہر عنصر کی بالکل صحیح قدریں دیتا ہے: رنگ، فونٹ، سائز، اور خالی جگہ۔ آٹو لے آؤٹ فگما کا flex کا متبادل ہے۔ جب آپ فگما میں horizontal direction، 16 px gap، اور 24 px padding دیکھیں تو آپ کے Tailwind کلاسیں ہوں گی: flex flex-row gap-4 p-6۔ ڈیو موڈ بند کر کے آپ browser version اور desktop app دونوں میں پینل دیکھ سکتے ہیں۔ desktop app کے لیے figma.com/downloads سے font helper بھی انسٹال کریں تاکہ آپ کے کمپیوٹر کے fonts فگما میں نظر آئیں۔</p>
+</details>
+<hr />
+<h2 id="exporting-an-asset">Exporting an asset<a class="headerlink" href="#exporting-an-asset" title="Permanent link">&para;</a></h2>
+<p>Sometimes a design has a logo or a photo you need as a file. Select the <abbr title="One element in the design, listed in the left panel tree. (Roman Urdu: design ka ek hissa, left panel mein list hota hai)">layer</abbr> you want. Look at the bottom of the right panel for the <abbr title="Saving an icon or image from Figma as a file on your computer. (Roman Urdu: icon ya image ko file ke taur par save karna)">export</abbr> section. Click the plus button to add an <abbr title="Saving an icon or image from Figma as a file on your computer. (Roman Urdu: icon ya image ko file ke taur par save karna)">export</abbr> setting.</p>
+<p>Pick the format:</p>
+<ul>
+<li>Use <strong>SVG</strong> for icons and logos. SVG is a vector format: it stays sharp at any size and file sizes are usually small.</li>
+<li>Use <strong>PNG</strong> for photos and images with many colours. Use 2x scale for sharp display on high-resolution screens.</li>
+<li>Use <strong>WebP</strong> for photos when you want a smaller file size; <abbr title="A free design tool where designers draw the look of a website, available in the browser and as a desktop app. (Roman Urdu: ek free design tool jahan website ka design banta hai)">Figma</abbr> can <abbr title="Saving an icon or image from Figma as a file on your computer. (Roman Urdu: icon ya image ko file ke taur par save karna)">export</abbr> it directly.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Asset type</th>
+<th>Best format</th>
+<th>Reason</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Logo, icon</td>
+<td>SVG</td>
+<td>Scales sharp to any size; small file</td>
+</tr>
+<tr>
+<td>Photo, illustration</td>
+<td>PNG 2x or WebP</td>
+<td>Keeps detail; sharp on high-res screens</td>
+</tr>
+<tr>
+<td>Screenshot, social image</td>
+<td>PNG 1x</td>
+<td>Standard resolution is fine</td>
+</tr>
+<tr>
+<td>Animated graphic</td>
+<td>GIF or Lottie JSON</td>
+<td>Supports motion</td>
+</tr>
+</tbody>
+</table>
+<p>Click the Export button at the bottom of the <abbr title="Saving an icon or image from Figma as a file on your computer. (Roman Urdu: icon ya image ko file ke taur par save karna)">export</abbr> section to save the file to your computer.</p>
+<div class="admonition info">
+<p class="admonition-title">Screenshot coming soon</p>
+<p><abbr title="A free design tool where designers draw the look of a website, available in the browser and as a desktop app. (Roman Urdu: ek free design tool jahan website ka design banta hai)">Figma</abbr> <abbr title="Saving an icon or image from Figma as a file on your computer. (Roman Urdu: icon ya image ko file ke taur par save karna)">export</abbr> panel on Windows with a logo <abbr title="One element in the design, listed in the left panel tree. (Roman Urdu: design ka ek hissa, left panel mein list hota hai)">layer</abbr> selected, showing SVG and PNG options and the scale field.</p>
+</div>
+<hr />
+<h3 id="try-this">Try this<a class="headerlink" href="#try-this" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Go to <a href="https://www.figma.com/downloads/">https://www.figma.com/downloads/</a> and look at what is available. If you plan to use <abbr title="A free design tool where designers draw the look of a website, available in the browser and as a desktop app. (Roman Urdu: ek free design tool jahan website ka design banta hai)">Figma</abbr> regularly, download the desktop app and the font installer now.</li>
+<li>Sign up for a free <abbr title="A free design tool where designers draw the look of a website, available in the browser and as a desktop app. (Roman Urdu: ek free design tool jahan website ka design banta hai)">Figma</abbr> account. Open any community file (search for "landing page" in the <abbr title="A free design tool where designers draw the look of a website, available in the browser and as a desktop app. (Roman Urdu: ek free design tool jahan website ka design banta hai)">Figma</abbr> Community tab).</li>
+<li>Turn on <abbr title="A Figma view that shows exact CSS values and code snippets for developers. (Roman Urdu: Figma ka woh hissa jo developer ke liye values aur CSS dikhata hai)">Dev Mode</abbr>. Click three different elements: a heading, a button, and a section background. Write down the fill, font size, weight, and padding for each one.</li>
+<li>Using the table above, write the Tailwind classes for each set of values you found. For example: if the panel shows <code>padding: 24px</code> and <code>background: #0fab95</code>, write <code>p-6 bg-[#0fab95]</code>.</li>
+<li>Find any <abbr title="A Figma feature that arranges children automatically, equivalent to CSS flexbox. (Roman Urdu: Figma ka flex jaisa feature jo elements ko automatically lagata hai)">auto-layout</abbr> <abbr title="A fixed-size container in Figma representing one screen or section. (Roman Urdu: ek page ya screen Figma ke andar)">frame</abbr> in the file. Read its direction, gap, and padding. Write the three or four Tailwind classes that match.</li>
+</ol>
+<hr />
+<h2 id="knowledge-check">Knowledge check<a class="headerlink" href="#knowledge-check" title="Permanent link">&para;</a></h2>
+<p>Don't write anything down. Just see if you can answer these in your head. If you can't, scroll back up.</p>
+<ol>
+<li>What is the difference between the <abbr title="A free design tool where designers draw the look of a website, available in the browser and as a desktop app. (Roman Urdu: ek free design tool jahan website ka design banta hai)">Figma</abbr> browser version and the desktop app? Why does the desktop app need a separate font installer?</li>
+<li>Which panel in <abbr title="A free design tool where designers draw the look of a website, available in the browser and as a desktop app. (Roman Urdu: ek free design tool jahan website ka design banta hai)">Figma</abbr> shows the exact colour, font, and spacing of a selected element?</li>
+<li>A <abbr title="A free design tool where designers draw the look of a website, available in the browser and as a desktop app. (Roman Urdu: ek free design tool jahan website ka design banta hai)">Figma</abbr> <abbr title="A fixed-size container in Figma representing one screen or section. (Roman Urdu: ek page ya screen Figma ke andar)">frame</abbr> uses <abbr title="A Figma feature that arranges children automatically, equivalent to CSS flexbox. (Roman Urdu: Figma ka flex jaisa feature jo elements ko automatically lagata hai)">auto-layout</abbr> with horizontal direction, gap 16px, and padding 24px top/bottom, 32px left/right. Write the four Tailwind classes.</li>
+<li>The design panel shows <code>border-radius: 12px</code> and <code>font-weight: 600</code>. What are the Tailwind classes?</li>
+<li>You want to <abbr title="Saving an icon or image from Figma as a file on your computer. (Roman Urdu: icon ya image ko file ke taur par save karna)">export</abbr> a charity logo. Should you choose SVG or PNG, and why?</li>
+</ol>
+<hr />
+<h2 id="whats-next">What's next<a class="headerlink" href="#whats-next" title="Permanent link">&para;</a></h2>
+<p>You can now navigate <abbr title="A free design tool where designers draw the look of a website, available in the browser and as a desktop app. (Roman Urdu: ek free design tool jahan website ka design banta hai)">Figma</abbr>, read every value in the properties panel, and translate <abbr title="A Figma feature that arranges children automatically, equivalent to CSS flexbox. (Roman Urdu: Figma ka flex jaisa feature jo elements ko automatically lagata hai)">auto-layout</abbr> settings to flexbox classes. Next you put it all together into a real job: take a full <abbr title="A free design tool where designers draw the look of a website, available in the browser and as a desktop app. (Roman Urdu: ek free design tool jahan website ka design banta hai)">Figma</abbr> design and build it as a working website, step by step.</p>
+<p><a class="next-lesson" href="../5-4-figma-to-website-workflow/">Next lesson: 5.4 <abbr title="A free design tool where designers draw the look of a website, available in the browser and as a desktop app. (Roman Urdu: ek free design tool jahan website ka design banta hai)">Figma</abbr> to website workflow &rarr;</a></p>
+<hr />
+<h2 id="going-deeper-optional">Going deeper (optional)<a class="headerlink" href="#going-deeper-optional" title="Permanent link">&para;</a></h2>
+<p>These are for the curious. You don't need them to continue.</p>
+<ul>
+<li><a href="https://www.figma.com/downloads/"><abbr title="A free design tool where designers draw the look of a website, available in the browser and as a desktop app. (Roman Urdu: ek free design tool jahan website ka design banta hai)">Figma</abbr> downloads page</a> (desktop app and font installer)</li>
+<li><a href="https://help.figma.com/hc/en-us/articles/360055203533-Use-Dev-Mode-to-inspect-designs"><abbr title="A free design tool where designers draw the look of a website, available in the browser and as a desktop app. (Roman Urdu: ek free design tool jahan website ka design banta hai)">Figma</abbr> Help: Use <abbr title="A Figma view that shows exact CSS values and code snippets for developers. (Roman Urdu: Figma ka woh hissa jo developer ke liye values aur CSS dikhata hai)">Dev Mode</abbr> to inspect designs</a></li>
+<li><a href="https://help.figma.com/hc/en-us/articles/360040451373"><abbr title="A free design tool where designers draw the look of a website, available in the browser and as a desktop app. (Roman Urdu: ek free design tool jahan website ka design banta hai)">Figma</abbr> Help: Auto layout</a></li>
+<li><a href="https://help.figma.com/hc/en-us/articles/360040028114-Export-from-Figma"><abbr title="A free design tool where designers draw the look of a website, available in the browser and as a desktop app. (Roman Urdu: ek free design tool jahan website ka design banta hai)">Figma</abbr> Help: Export from <abbr title="A free design tool where designers draw the look of a website, available in the browser and as a desktop app. (Roman Urdu: ek free design tool jahan website ka design banta hai)">Figma</abbr></a></li>
+</ul>
+<!-- The Mark Complete button is injected here automatically by the site template. -->
+<!-- Glossary tooltips used in this lesson. -->
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../5-2-building-real-components/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 5.2 Building real components with Tailwind">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                5.2 Building real components with Tailwind
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../5-4-figma-to-website-workflow/" class="md-footer__link md-footer__link--next" aria-label="Next: 5.4 Figma to website workflow">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                5.4 Figma to website workflow
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.instant", "navigation.instant.progress", "navigation.tracking", "navigation.top", "navigation.footer", "navigation.indexes", "navigation.expand", "toc.follow", "content.code.copy", "content.code.annotate", "search.suggest", "search.highlight"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../../javascripts/language-toggle.js"></script>
+      
+        <script src="../../javascripts/glossary-tooltip.js"></script>
+      
+        <script src="../../javascripts/quiz.js"></script>
+      
+        <script src="../../javascripts/external-links.js"></script>
+      
+        <script src="../../javascripts/sidebar-toggle.js"></script>
+      
+    
+  </body>
+</html>
